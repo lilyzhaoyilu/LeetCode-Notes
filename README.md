@@ -1,3 +1,2 @@
-# 91DayAlgorithms
-Doing Leetcode for 91 days with Lucifer.
-Mainly use Ruby in this collection.
+### 91DayAlgorithms
+Collection of Leetcode practice with leetcode-pp (WeChat media account)
