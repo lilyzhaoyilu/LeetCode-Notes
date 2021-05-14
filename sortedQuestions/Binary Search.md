@@ -3,9 +3,31 @@
 学习 https://github.com/azl397985856/leetcode/blob/master/91/binary-search.md  
 二分查找又称折半搜索算法。 狭义地来讲，二分查找是一种在有序数组查找某一特定元素的搜索算法。这同时也是大多数人所知道的一种说法。实际上， 广义的二分查找是将问题的规模缩小到原有的一半。类似的，三分法就是将问题规模缩小为原来的 1/3。
 
+### Hints to use
+
+1. 排序数组 (30% - 40%)
+2. 找比 O(N)更小时间复杂度算法 (99%)
+3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
+4. 找到一个最大/最小值使某个条件被满足(90%)
+
+### 复杂度分析
+
+- 平均时间复杂度： $O(logN)$
+- 最坏时间复杂度： $O(logN)$
+- 最优时间复杂度： $O(1)$
+- 空间复杂度
+  - 迭代：$O(1)$
+  - 递归：$O(logN)$（无尾调用消除）
+
+### 题型 & 思路
+
 - [题型一：查找一个数](#题型一：查找一个数)
 - [题型二：寻找最左边的满足条件的值](#题型二：寻找最左边的满足条件的值)
 - [题型三：寻找最右边的满足条件的值](#题型三：寻找最右边的满足条件的值)
+- [题型四：寻找最左插入位置](#题型四：寻找最左插入位置)
+- [题型五：寻找最右插入位置](#题型五：寻找最右插入位置)
+- [题型六：局部有序](#题型六：局部有序)
+- [寻找最值 todo]
 
 ### 题型一：查找一个数
 
@@ -20,16 +42,7 @@
 - index 区间如果为空，则表示找不到
   - 因此此处设定是要 left <= right 这样的话当区间里只有一个数字的时候，是能返回正确的值的
 
-#### 复杂度分析
-
-- 平均时间复杂度： $O(logN)$
-- 最坏时间复杂度： $O(logN)$
-- 最优时间复杂度： $O(1)$
-- 空间复杂度
-  - 迭代: $O(1)$
-  - 递归： $O(logN)$（无尾调用消除）
-
-### 模板 查找一个数
+#### 模板 查找一个数
 
 ```JavaScript
 function binarySearch(nums, target) {
@@ -67,7 +80,7 @@ function binarySearch(nums, target) {
   - 如果 nums[left] != target，或者 left 出了右边界(nums.length - 1)，则-1
   - 或者 返回 left
 
-### 模板 寻找最左边的满足条件的值
+#### 模板 寻找最左边的满足条件的值
 
 ```JavaScript
 function binarySearchLeft(nums, target) {
@@ -110,10 +123,10 @@ function binarySearchLeft(nums, target) {
   - 如果 nums[right] != target，或者 right 出了左边界(0)，则-1
   - 或者 返回 left
 
-### 模板 寻找最右边的满足条件的值
+#### 模板 寻找最右边的满足条件的值
 
 ```JavaScript
-function binarySearchLeft(nums, target) {
+function binarySearchRight(nums, target) {
 
   let left = 0;
   let right = nums.length - 1;
@@ -128,7 +141,7 @@ function binarySearchLeft(nums, target) {
     //下面两个可以合并
     if (nums[mid] < target)
       left = mid + 1;
-    //寻找最右和最左的区别
+    //寻找最右和最左的区别 此处收缩左边界
     if (nums[mid] == target){
        left = mid + 1;
     }
@@ -139,3 +152,225 @@ function binarySearchLeft(nums, target) {
 }
 
 ```
+
+### 题型四：寻找最左插入位置
+
+#### 思维框架
+
+对于[1,3,4] target = 2 来说，应该返回的是 1； 同理，对于[1,2,2,2,2,3] target = 2 来说，应该返回的是 1.
+那么寻找最左插入位置 => 寻找最左侧 >= target 的值 // 寻找第一个大于等于 target 的值
+（之前寻找最左侧的值是 值 == target）
+
+定义搜索区间为[left, right]，终止搜索条件为 left <= right
+
+- 当 nums[mid] >= x,说明捡到一个备胎，将备胎剔除，看是否有更好备胎
+- 当 nums[mid] < x, 说明 nums[mid]不可能在答案区间内，直接更新 left = mid + 1
+- 最后搜索区间的 left 就是我们想要的值
+
+#### 模板 寻找最左插入位置
+
+```JavaScript
+function binarySearchMostLeftInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor(left + (right - left) / 2);
+    //mid可能是想要的，但再找找还有想要的吗
+    if (nums[mid] == target)
+      right = mid - 1;
+    //mid有可能是想要的
+    if (nums[mid] > target)
+      right = mid - 1;
+
+    //答案不可能在[left, mid]区间内
+    if (nums[mid] < target)
+      left = mid + 1;
+
+  }
+  // 检查是否越界，区别在于不用检查是否等于
+  if (left >= nums.length) return -1;
+  return left;
+}
+
+```
+
+### 题型五：寻找最右插入位置
+
+#### 思维框架
+
+那么寻找最右插入位置 => 寻找最左 > target 的值 //寻找第一个大于 target 的值
+（之前寻找最左侧的值是 值 == target）
+
+定义搜索区间为[left, right]，终止搜索条件为 left <= right
+
+- 当 nums[mid] > x,说明捡到一个备胎，将备胎剔除，看是否有更好备胎
+- 当 nums[mid] =< x, 说明 nums[mid]不可能在答案区间内，直接更新 left = mid + 1，从而将 mid 在搜索区域内剔除
+- 最后搜索区间的 left 就是我们想要的值
+
+#### 模板 寻找最左插入位置
+
+```JavaScript
+function binarySearchMostRightInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor(left + (right - left) / 2);
+
+    //mid可能是想要的，再找找还有想要的吗
+    if (nums[mid] > target)
+      right = mid - 1;
+
+    //[left, mid]绝对不是想要的
+    if (nums[mid] == target)
+      // 收缩右边界
+      left = mid + 1;
+    //[left, mid]绝对不是想要的
+    if (nums[mid] < target)
+      left = mid + 1;
+
+  }
+  // 检查是否越界，区别在于不用检查是否等于
+  if (left >= nums.length) return -1;
+  return left;
+}
+
+```
+
+### 题型六：局部有序
+
+#### [LC 33. Search in Rotated Sorted Array](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
+
+重点是知道，在二分的一个点之后， nums[mid]的左边或者右边必有一个有序区间
+如果他正常的不在有序区间里，那他就在另外一边
+
+```JavaScript
+var search = function(nums, target) {
+
+  let left = 0, right = nums.length - 1;
+
+  while(left <= right){
+    const mid = left + ((right - left) >> 1)
+
+    if(nums[mid] == target) return mid;
+
+    if(nums[left] <= nums[mid]){
+      if(nums[mid] > target && nums[left] <= target){
+        right = mid - 1
+      }else{
+        left = mid + 1
+      }
+    }else{
+      if(nums[mid] < target && nums[right] >= target ){
+        left = mid + 1
+      }else{
+        right = mid - 1
+      }
+    }
+  }
+
+  if(left >= 0 && nums[left] === target) return left;
+
+  return -1
+};
+
+```
+
+#### [LC 81. Search in Rotated Sorted Array II](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/submissions/)
+
+```JavaScript
+var search = function(nums, target) {
+  let left = 0, right = nums.length - 1;
+
+
+  while(left <= right){
+    const mid = left + ((right - left) >> 1)
+
+    if(nums[mid] == target) return true;
+
+    //这里要考虑 [3,0,1,3,3,3,3]这种corner case
+    //可以舍弃一边，并且给移动的指针画一个界限
+    //界限是mid，不是arr.length / 0
+    if(nums[left] === nums[right] && left < mid){
+      left++
+    }else if(nums[left] <= nums[mid]){
+      if(nums[mid] > target && nums[left] <= target){
+        right = mid - 1
+      }else{
+        left = mid + 1
+      }
+    }else{
+      if(nums[mid] < target && target <= nums[right]){
+        left = mid + 1
+      }else{
+        right = mid - 1
+      }
+    }
+  }
+
+  if(nums[left] === target) return true;
+
+  return false;
+};
+
+```
+
+#### [LC 面试题 10.03. Search Rotate Array LCCI](https://leetcode-cn.com/problems/search-rotate-array-lcci/)
+
+面试题 10.03. Search Rotate Array LCCI
+Given a sorted array of n integers that has been rotated an unknown number of times, write code to find an element in the array. You may assume that the array was originally sorted in increasing order. If there are more than one target elements in the array, return the smallest index.
+
+Example1:
+
+Input: arr = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14], target = 5
+Output: 8 (the index of 5 in the array)
+Example2:
+
+Input: arr = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14], target = 11
+Output: -1 (not found)
+Note:
+
+1 <= arr.length <= 1000000
+
+```JavaScript
+/**
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(arr, target) {
+  // 题意转换 -> 找寻左边第一个等于target的，所以要尽量在右边缩小
+  let left = 0, right = arr.length - 1;
+
+  while(left <= right){
+    const mid = left + ((right - left) >> 1)
+    //could have duplicates
+    if(arr[left] < arr[mid]){
+      if(arr[mid] >= target && arr[left] <= target){
+        right = mid - 1;
+      }else{
+        left = mid + 1
+      }
+      //注意这里的单独讨论
+    }else if (arr[left] > arr[mid]){
+      //注意这里的缩小范围
+      if(arr[left] <= target || target <= arr[mid]){
+        right = mid - 1
+      }else{
+        left = mid+ 1
+      }
+    }else if(arr[left] == arr[mid]){
+      //因为找最左的，所以只在确定最左不是答案的情况下再缩小
+      if(arr[left] != target){
+        left++
+      }else{
+        right = left - 1
+      }
+    }
+  }
+
+  if(target === arr[left] && left < arr.length) return left;
+  return -1;
+};
+```
+
+#### [LC 74. Search a 2D Matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)

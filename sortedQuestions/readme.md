@@ -1,6 +1,6 @@
-## CheatSheet
+# Sorted Questions
 
-#### [Binary Search](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Binary%20Search.md)
+### [Binary Search](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Binary%20Search.md)
 
 #### Two Pointers
 
