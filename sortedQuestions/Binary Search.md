@@ -1,6 +1,7 @@
 ## Binary Search
 
-学习 https://github.com/azl397985856/leetcode/blob/master/91/binary-search.md  
+学习 https://github.com/azl397985856/leetcode/blob/master/91/binary-search.md
+
 二分查找又称折半搜索算法。 狭义地来讲，二分查找是一种在有序数组查找某一特定元素的搜索算法。这同时也是大多数人所知道的一种说法。实际上， 广义的二分查找是将问题的规模缩小到原有的一半。类似的，三分法就是将问题规模缩小为原来的 1/3。
 
 ### Hints to use
@@ -24,7 +25,10 @@
 1. 先定义搜索区间（非常重要）
 2. 根据搜索区间定义循环结束条件
 3. 取中间元素和目标元素做对比（可能是要找的，可能是数组第一个）  
-   如果是整体有序通常只要比较 nums[mid]和 target,如果局部有序则要和特定元素比较
+   如果是整体有序通常只要比较 nums[mid]和 target,如果局部有序则要和特定元素比较  
+   因为这个模板定义是 left <= right  
+   通常只要想当 mid == target cross 的时候  
+   和收缩是否能排除来确定 right = mid 还是 mid + 1 就好
 4. 根据比较的结果收缩区间，放弃非法解（也就是二分）
 5. 注意是否有无重复元素
 
@@ -111,7 +115,7 @@ function binarySearchLeft(nums, target) {
        right = mid - 1;
     }
   }
-  // 检查是否越界
+  // 检查是否越界 注意这里是nums[left]
   if (left >= nums.length || nums[left] != target) return -1;
   return left;
 }
@@ -155,7 +159,7 @@ function binarySearchRight(nums, target) {
        left = mid + 1;
     }
   }
-   // 检查是否越界
+   // 检查是否越界 //注意这里是nums[right]
   if (right < 0 || nums[right] != target) return -1;
   return right;
 }
@@ -384,8 +388,14 @@ var search = function(arr, target) {
 
 #### [LC 74. Search a 2D Matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
 
-[solution](!https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/Basic200/LC74.%20Search%20a%202D%20Matrix.md)
+[solution](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/Basic200/LC74.%20Search%20a%202D%20Matrix.md)
 
 ### 题型七：寻找最值
 
 ## LC 153. Find Minimum in Rotated Sorted Array
+
+[My soluiton](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/Basic200/LC153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.md)
+
+## LC 875. Koko Eating Banans
+
+[My Solution](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/Basic200/LC875.%20Koko%20Eating%20Bananas.md)
