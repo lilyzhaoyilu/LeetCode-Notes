@@ -22,3 +22,7 @@
 #### Trie
 
 #### Heap (MinHeap / MaxHeap)
+
+### others
+
+- [Monotonic queue](!https://lucifer.ren/blog/2020/11/03/monotone-stack/)

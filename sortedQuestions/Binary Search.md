@@ -19,6 +19,15 @@
   - 迭代：$O(1)$
   - 递归：$O(logN)$（无尾调用消除）
 
+### 总结
+
+1. 先定义搜索区间（非常重要）
+2. 根据搜索区间定义循环结束条件
+3. 取中间元素和目标元素做对比（可能是要找的，可能是数组第一个）  
+   如果是整体有序通常只要比较 nums[mid]和 target,如果局部有序则要和特定元素比较
+4. 根据比较的结果收缩区间，放弃非法解（也就是二分）
+5. 注意是否有无重复元素
+
 ### 题型 & 思路
 
 - [题型一：查找一个数](#题型一：查找一个数)
@@ -26,8 +35,8 @@
 - [题型三：寻找最右边的满足条件的值](#题型三：寻找最右边的满足条件的值)
 - [题型四：寻找最左插入位置](#题型四：寻找最左插入位置)
 - [题型五：寻找最右插入位置](#题型五：寻找最右插入位置)
-- [题型六：局部有序](#题型六：局部有序)
-- [寻找最值 todo]
+- [题型六：局部有序+二维数组](#题型六：局部有序+二维数组)
+- [题型七：寻找最值](#题型六：寻找最值)
 
 ### 题型一：查找一个数
 
@@ -236,7 +245,7 @@ function binarySearchMostRightInsert(nums, target) {
 
 ```
 
-### 题型六：局部有序
+### 题型六：局部有序+二维数组
 
 #### [LC 33. Search in Rotated Sorted Array](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
 
@@ -374,3 +383,9 @@ var search = function(arr, target) {
 ```
 
 #### [LC 74. Search a 2D Matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
+
+[solution](!https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/Basic200/LC74.%20Search%20a%202D%20Matrix.md)
+
+### 题型七：寻找最值
+
+## LC 153. Find Minimum in Rotated Sorted Array
