@@ -2,7 +2,7 @@
 
 ### [Binary Search](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Binary%20Search.md) :heavy_check_mark:
 
-#### Two Pointers / Sliding Window :fountain_pen:
+### [Two Pointers / Sliding Window](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Two%20Pointers%20%26%20Sliding%20Window.md) :fountain_pen:
 
 #### Sorting Methods
 
