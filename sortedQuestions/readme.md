@@ -19,10 +19,10 @@
 
 #### Union Find
 
-#### Trie
+### [Trie](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Trie.md) :heavy_check_mark:
 
 #### Heap (MinHeap / MaxHeap)
 
 ### others
 
-- [Monotonic queue](!https://lucifer.ren/blog/2020/11/03/monotone-stack/)
+- [Monotonic queue](!https://lucifer.ren/blog/2020/11/03/monotone-stack/) :fountain_pen:

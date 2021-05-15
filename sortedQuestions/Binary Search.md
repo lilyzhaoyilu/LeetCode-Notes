@@ -1,4 +1,4 @@
-## Binary Search
+# Binary Search
 
 学习 https://github.com/azl397985856/leetcode/blob/master/91/binary-search.md
 
