@@ -33,7 +33,7 @@
 
 ## others
 
-### [Monotonic Queue](!https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Monotonic%20Queue.md) :heavy_check_mark:
+### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Monotonic%20Queue.md) :heavy_check_mark:
 
 1. 下一个大于 xxx
 2. 下一个小于 xxx
