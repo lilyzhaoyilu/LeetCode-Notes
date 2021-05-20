@@ -16,14 +16,14 @@
 5. 回文 palindrome （50%）
 6. 前缀和 + 二维前缀和- :fountain_pen:
 
-### [Sorting Methods :heavy_check_mark:]()
+### [Sorting Methods :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Sortings%20Methods.md)
 
 - Quick sort O(NlogN)
 - Merge sort O(NlogN))
 - Insertion Sort O(N^2)
 - Bubble Sort O(N^2)
 
-### Binary Tree Divide & Conquer :fountain_pen:
+### [Binary Tree Divide & Conquer :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Binary%20Tree%20Divide%20%26%20Conquer.md)
 
 - BFS - Breadth First Search
 - DFS - Depth First Search

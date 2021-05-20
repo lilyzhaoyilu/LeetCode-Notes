@@ -91,7 +91,8 @@ var mergeSortHelper = function(left, right){
 ## Insertion Sort 插入排序
 
 每次将一个数字插入一个有序的数组里，成为一个长度更长的有序数组，有限次操作以后，数组整体有序。  
-[LC 147. Insertion Sort List](https://leetcode-cn.com/problems/insertion-sort-list/) 写了
+[LC 147. Insertion Sort List](https://leetcode-cn.com/problems/insertion-sort-list/)  
+[My Solution](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/LC147.%20Insertion%20Sort%20List.md)
 
 ### Complexity
 
