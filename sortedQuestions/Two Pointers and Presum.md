@@ -2,7 +2,9 @@
 
 https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md  
 前缀和  
-https://leetcode-cn.com/problems/fruit-into-baskets/solution/xi-fa-dai-ni-xue-suan-fa-yi-ci-gao-ding-qian-zhu-3/
+https://mp.weixin.qq.com/s/6hTbcin64TtHi0UEpvkchA
+二维前缀和
+https://mp.weixin.qq.com/s/PR8i45CBmWeB3aLSC36mlQ
 
 ## Complexity
 

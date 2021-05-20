@@ -9,14 +9,12 @@
 
 ### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Two%20Pointers%20%26%20Sliding%20Window.md) :fountain_pen:
 
-已经完成基础部分
-
 1. 滑动窗口(90%)
 2. 时间复杂度 O(N)（80%）
 3. 原地交换，不能使用额外空间(80%)
 4. 有 subarray / substring 关键词(50%)
 5. 回文 palindrome （50%）
-6. 前缀和 - :fountain_pen:
+6. 前缀和 + 二维前缀和- :fountain_pen:
 
 #### Sorting Methods
 
@@ -41,7 +39,7 @@
 #### Heap (MinHeap / MaxHeap)
 
 1. 动态求极值（动态：第 k 小/大的数），且复杂度 O(NlogK)
-2. logN 时间对数据进行操作
+2. logk 时间对数据进行操作
    不能：
 
 - 查询比某个数大的最小值/接近值（二叉树或者 binary
