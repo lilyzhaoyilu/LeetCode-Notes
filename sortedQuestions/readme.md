@@ -16,16 +16,17 @@
 5. 回文 palindrome （50%）
 6. 前缀和 + 二维前缀和- :fountain_pen:
 
-#### Sorting Methods
+### [Sorting Methods :heavy_check_mark:]()
 
-- Quick sort
-- Merge sort
+- Quick sort O(NlogN)
+- Merge sort O(NlogN))
+- Insertion Sort O(N^2)
+- Bubble Sort O(N^2)
 
-#### Binary Tree Divide & Conquer
+### Binary Tree Divide & Conquer :fountain_pen:
 
-#### BFS - Breadth First Search
-
-#### DFS - Depth First Search
+- BFS - Breadth First Search
+- DFS - Depth First Search
 
 #### Dynamic Programming
 
