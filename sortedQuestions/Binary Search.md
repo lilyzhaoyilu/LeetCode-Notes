@@ -134,7 +134,7 @@ function binarySearchLeft(nums, target) {
   - 如果 nums[mid] > target, 则解可能在区间 [left, mid - 1]
 - 由于不会提前返回，需要检查最终的 right，看 nums[right] 是否等于 target
   - 如果 nums[right] != target，或者 right 出了左边界(0)，则-1
-  - 或者 返回 left
+  - 或者 返回 right
 
 #### 模板 寻找最右边的满足条件的值
 
