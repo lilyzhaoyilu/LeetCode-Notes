@@ -30,7 +30,7 @@
 
 #### Dynamic Programming
 
-#### Union Find
+### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Union%20Find.md)
 
 ### [Trie](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Trie.md) :heavy_check_mark:
 
