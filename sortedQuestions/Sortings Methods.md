@@ -6,11 +6,13 @@ https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan
 
 -[Quick Sort 快速排序](#Quick-Sort-快速排序)  
 -[Merge Sort 归并排序](#Merge-Sort-归并排序)  
--[Insertion Sort 插入排序](#Insertion-Sort-插入排序) -[Bubble Sort 冒泡排序](#Bubble-Sort-冒泡排序)
+-[Insertion Sort 插入排序](#Insertion-Sort-插入排序)  
+-[Selection Sort 选择排序](#Selection-Sort-选择排序)  
+-[Bubble Sort 冒泡排序](#Bubble-Sort-冒泡排序)
 
 ## Quick Sort 快速排序
 
-[LC 912](https://leetcode-cn.com/problems/sort-an-array/)  
+[LC 912. Sort an Array](https://leetcode-cn.com/problems/sort-an-array/)  
 思路
 
 - 每次选定一个元素 pivot，以它为标杆
@@ -25,11 +27,11 @@ https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan
 
 ```JavaScript
 var sortArray = function(nums) {
-  quickSortHelper(nums, 0, nums.length - 1)
+  partision(nums, 0, nums.length - 1)
   return nums
 };
 
-var quickSortHelper = function(nums, start, end){
+var partision = function(nums, start, end){
   if(start >= end) return;
   const pivotIndex = start + ((end - start) >> 1)
   const pivot = nums[pivotIndex]
@@ -46,8 +48,8 @@ var quickSortHelper = function(nums, start, end){
     }
   }
 
-  quickSortHelper(nums, start, j)
-  quickSortHelper(nums, i, end)
+  partision(nums, start, j)
+  partision(nums, i, end)
 }
 ```
 
@@ -115,6 +117,31 @@ var InsertionSort = function(nums) {
     nums[j] = cur
   }
   return nums;
+};
+
+```
+
+## Selection Sort 选择
+
+思路：每一轮选取未排定的部分中最小的部分交换到未排定部分的最开头，经过若干个步骤，就能排定整个数组。即：先选出最小的，再选出第 2 小的，以此类推。
+
+### Complexity
+
+- Time complexity: O(n^2)
+- Space complexity: O(1)
+
+### 模板
+
+```JavaScript
+var sortArray = function(nums) {
+  for(let i = 0; i < nums.length - 1; i++){
+    let mid = i
+    for(let j = i+1; j <  nums.length; j++){
+      if(nums[j] < nums[mid]) mid = j
+    }
+    [nums[mid], nums[i]] = [nums[i], nums[mid]]
+  }
+  return nums
 };
 
 ```
