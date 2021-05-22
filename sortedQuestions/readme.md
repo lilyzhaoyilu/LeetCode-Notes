@@ -23,7 +23,7 @@
 - Insertion Sort O(N^2)
 - Bubble Sort O(N^2)
 
-### [Tree DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Binary%20Tree%20Divide%20%26%20Conquer.md)
+### [Tree DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Tree%20BFS%20DFS.md)
 
 - BFS - Breadth First Search
 - DFS - Depth First Search
