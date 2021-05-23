@@ -24,6 +24,12 @@
 BFS 也不是树独有的。  
 BFS 使用的是 queue， queue 是 FIFO
 
+#### 复杂度
+
+时间复杂度：O(n + m)
+n 是点数, m 是边数
+空间复杂度：O(n)
+
 #### BFS 遍历（有层
 
 ```JavaScript

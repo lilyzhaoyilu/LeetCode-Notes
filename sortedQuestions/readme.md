@@ -23,10 +23,25 @@
 - Insertion Sort O(N^2)
 - Bubble Sort O(N^2)
 
-### [Tree DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Tree%20BFS%20DFS.md)
+### [Binary Tree :fountain_pen:]()
+
+### [DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Tree%20BFS%20DFS.md)
 
 - BFS - Breadth First Search
+  - 拓扑排序（100%）
+  - 出现连通块的关键词（100%）
+  - 分层遍历（100%）
+  - 简单图最短路径（100%）
+  - 给定一个变换规则，从初始状态到最终状态最少走几步（100%）
 - DFS - Depth First Search
+  - 满足某个条件的所有解决方案(99%)
+  - 二叉树问题(90%)
+  - 组合问题(95%)
+    - 问题模型：求出所有满⾜条件的“组合”
+    - 判断条件：组合中的元素是顺序⽆关的
+  - 排列问题(95%)
+  - 问题木星：求出所有满⾜条件的“排列”
+  - 判断条件：组合中的元素是顺序相关的
 
 #### Dynamic Programming
 
@@ -56,3 +71,5 @@
 3. 如果有 nums， 其每个 digit 最小的排列方法是递增栈，最大的排列方式是递减栈
 4. 有一堆 digits，找最大/最小的排列方式
 5. 对连续性有一定要求的？
+
+### [Topological Sort]()
