@@ -23,9 +23,9 @@
 - Insertion Sort O(N^2)
 - Bubble Sort O(N^2)
 
-### [Binary Tree :fountain_pen:]()
+### [Binary Tree :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Binary%20Tree.md)
 
-### [DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Tree%20BFS%20DFS.md)
+### [DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md)
 
 - BFS - Breadth First Search
   - 拓扑排序（100%）
@@ -72,4 +72,4 @@
 4. 有一堆 digits，找最大/最小的排列方式
 5. 对连续性有一定要求的？
 
-### [Topological Sort]()
+### [Topological Sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Topological.md)

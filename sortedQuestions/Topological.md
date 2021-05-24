@@ -23,6 +23,13 @@ e.g.
 - B and C are interchangeable since there is no edge between them
 - D must come before E
 
+### Topological Sort BFS
+
+[LC1136 Parallel Courses](https://leetcode-cn.com/problems/parallel-courses/)  
+[LC1136 My notes](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/T/LC1136.%20Parallel%20Courses.md)
+
+### Topoligcal Sort DFS
+
 ```JavaScript
 class Graph {
   constructor() {
