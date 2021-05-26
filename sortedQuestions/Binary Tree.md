@@ -57,7 +57,32 @@ var BFSBinaryTree = function(root) {
 如果遇到灰色，则直接将节点值输出
 
 ```JavaScript
-var ThreeColorBFS = function(root){
+var preorderTraversal = function(root) {
+  if(!root) return [];
+
+  const res = [];
+  const queue = [[ 'WHITE', root]]
+
+  while(queue.length){
+    const [color, node] = queue.shift();
+    if(!node) continue;
+
+    if(color == 'WHITE'){
+      queue.push(['GRAY', node]) //前序遍历，用queue的话这样
+      //因为queue FIFO
+      queue.push(['WHITE', node.left])
+      queue.push(['WHITE', node.right])
+    }else{
+      res.push(node.val)
+    }
+  }
+  return res;
+};
+
+```
+
+```JavaScript
+var TwoColorBFS = function(root){
   if(!root) return [];
 
   const res = [];
@@ -78,6 +103,29 @@ var ThreeColorBFS = function(root){
   return res;
 }
 
+```
+
+```JavaScript
+var preorderTraversal = function(root) {
+  if(!root) return [];
+
+  const res = [];
+  const stack = [[ 'WHITE', root]]
+
+  while(stack.length){
+    const [color, node] = stack.pop();
+    if(!node) continue;
+
+    if(color == 'WHITE'){
+      stack.push(['WHITE', node.right])
+      stack.push(['WHITE', node.left])
+      stack.push(['GRAY', node]) //前序遍历，调整他来调整遍历 因为模拟出栈pop LIFO 所以前序放在最后 就是反过来了
+    }else{
+      res.push(node.val)
+    }
+  }
+  return res;
+};
 ```
 
 ## Depth First Search
