@@ -15,6 +15,8 @@ Topological sorting only works for DAG (directed acyclic graph) : a directed gra
 [[a,b],[a,b]] doesn't work cuz it has a cycle
 Topological sort: an algorithm that assigns topological numbers to vertices.
 
+when building graphs, it is typically {a: [b,c]} where a depneds on b and c
+
 e.g.  
 ![pic](https://miro.medium.com/max/428/1*b8Pa1uVQHtemY9IrP5XmHA.png)
 
