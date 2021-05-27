@@ -23,7 +23,9 @@
 - Insertion Sort O(N^2)
 - Bubble Sort O(N^2)
 
-### [Binary Tree :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Binary%20Tree.md)
+### [Binary Tree :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Binary%20Tree.md)
+
+- 二叉树的遍历和修改
 
 ### [DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md)
 
@@ -61,6 +63,7 @@
 - 查询比某个数大的最小值/接近值（二叉树或者 binary
 - 查找某段区间最大或者最小
 - O(N)找第 k 大（要用快排的 partision）
+- merge K sorted list
 
 ## others
 

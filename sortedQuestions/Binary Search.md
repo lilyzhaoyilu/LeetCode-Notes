@@ -36,7 +36,7 @@
 
 - [题型一：查找一个数](#题型一：查找一个数)
 - [题型二：寻找最左边的满足条件的值](#题型二：寻找最左边的满足条件的值)
-- [**题型三：寻找最右边的满足条件的值**](#题型三：寻找最右边的满足条件的值)
+- [题型三：寻找最右边的满足条件的值](#题型三：寻找最右边的满足条件的值)
 - [**题型四：寻找最左插入位置**](#题型四：寻找最左插入位置)
 - [**题型五：寻找最右插入位置**](#题型五：寻找最右插入位置)
 - [题型六：局部有序+二维数组](#题型六：局部有序+二维数组)
@@ -191,7 +191,7 @@ function binarySearchMostLeftInsert(nums, target) {
     //mid可能是想要的，但再找找还有想要的吗
     if (nums[mid] == target)
       right = mid - 1;
-    //mid有可能是想要的
+    //mid有可能是想要的，但更多想要的可能在左边
     if (nums[mid] > target)
       right = mid - 1;
 
@@ -201,6 +201,7 @@ function binarySearchMostLeftInsert(nums, target) {
 
   }
   // 检查是否越界，区别在于不用检查是否等于
+  //如果要找满足条件的值，再加一个 nums[left] === target 即可
   if (left >= nums.length) return -1;
   return left;
 }
@@ -220,7 +221,7 @@ function binarySearchMostLeftInsert(nums, target) {
 - 当 nums[mid] =< x, 说明 nums[mid]不可能在答案区间内，直接更新 left = mid + 1，从而将 mid 在搜索区域内剔除
 - 最后搜索区间的 left 就是我们想要的值
 
-#### 模板 寻找最左插入位置
+#### 模板 寻找最右插入位置
 
 ```JavaScript
 function binarySearchMostRightInsert(nums, target) {
@@ -229,13 +230,13 @@ function binarySearchMostRightInsert(nums, target) {
   while (left <= right) {
     const mid = Math.floor(left + (right - left) / 2);
 
-    //mid可能是想要的，再找找还有想要的吗
+    //[mid,left]不是想要的
     if (nums[mid] > target)
       right = mid - 1;
 
-    //[left, mid]绝对不是想要的
+    //mid可能是想要的，但是再向右找一下有没有其他的
     if (nums[mid] == target)
-      // 收缩右边界
+
       left = mid + 1;
     //[left, mid]绝对不是想要的
     if (nums[mid] < target)
