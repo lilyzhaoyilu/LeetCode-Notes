@@ -12,9 +12,10 @@
    - 也可以 divide & conqure + resursive
 2. 要求 logn 时间对数据进⾏操作(40%)
 3. [topK](#四大应用：topK)
-4. 带权最短路径
-5. 因子分解
-6. 堆排序
+4. [多路归并](#多路归并)
+5. 带权最短路径
+6. 因子分解
+7. 堆排序
 
 #### 不能解决的问题
 
@@ -78,7 +79,6 @@ child = i, parent = Math.floor(i - 1 / 2)
 
 ### 固定堆 - 求 topk
 
-LC295
 例子：求第 K 小的数
 
 假设有[1,2,3,4,5,6] k = 2；
@@ -93,6 +93,9 @@ LC295
    2.1 移除较大的那个， 来保证堆中的数字是全体中最小的 k 个
 
 维持一个大小为 K 的堆： k 的大顶堆可以快速求第 k 小的数，反之固定一个大小为 k 的小顶堆可以快速求第 k 大的数
+
+295 是求第 k 小的特例-- 求第 n/2 小  
+[295. Find Median from Data Stream](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC295.%20Find%20Median%20from%20Data%20Stream.md)
 
 ### 多路归并
 
