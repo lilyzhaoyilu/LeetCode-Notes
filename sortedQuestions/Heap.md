@@ -102,6 +102,11 @@ child = i, parent = Math.floor(i - 1 / 2)
 - 多路体现在：有多条候选路线。代码上，我们可使用多指针来表示。
 - 归并体现在：结果可能是多个候选路线中最长的或者最短，也可能是第 k 个 等。因此我们需要对多条路线的结果进行比较，并根据题目描述舍弃或者选取某一个或多个路线。
 
+感觉很像 BFS，每次 pop 一个选项之后，根据这个 pop 的选项更新他的下一步所有可能解。
+
+-[KC264 ugly number](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)  
+-[LC1439](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows.md)
+
 ### 事后诸葛亮
 
 ## 四大应用
