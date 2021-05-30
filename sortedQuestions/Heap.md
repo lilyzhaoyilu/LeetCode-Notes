@@ -104,11 +104,30 @@ child = i, parent = Math.floor(i - 1 / 2)
 
 感觉很像 BFS，每次 pop 一个选项之后，根据这个 pop 的选项更新他的下一步所有可能解。
 
+也可以动态求一堆数组里的 min 和 max 和他们衍生出来的差值。只要维护一个 min，再用另一个 maxHeap （或者反过来）即可枚举所有可能性。因为差值只跟可能解的最大和最小值有关，所以可以使用这个方式。
+具体： 首先确定一个可能解的 list，然后把他的每个 element 入 heap；在每次 pop 出来的时候，根据这个 element 再更新同个 element 的 variation。
+
 -[KC264 ugly number](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)  
 -[LC1439](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows.md)
 
-### 事后诸葛亮
+### 事后诸葛亮 - 堆加速
+
+中心思想：因为现在的信息不足无法做出判断，等过了之后才想起来哎呀如果我刚刚在油最多的加油站加油就好啦！
+因为油最多的加油站是个动态，且加油站的数量不断增加，所以我们把已经‘错过’的选项用 heap 存起来，然后等*后悔*的时候再假装自己做了最明智（也就是选择极值）的选择。
+
+871 最低加油次数
+1488 避免洪水泛滥（其实并没有 用的二分）
+1642 可以到达最远建筑
 
 ## 四大应用
 
 ### 四大应用：topK
+
+347
+973
+
+### 四大应用：带权最短距离-dijkstra
+
+### 四大应用：因子分解
+
+### 四大应用：堆排序
