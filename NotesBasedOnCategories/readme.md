@@ -19,21 +19,21 @@
 
 ### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search.md) :heavy_check_mark:
 
-### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md):heavy_check_mark:
-
-- Quick sort O(NlogN)
-- Merge sort O(NlogN))
-- Insertion Sort O(N^2)
-- Bubble Sort O(N^2)
-
-### [Binary Tree](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Tree.md) :heavy_check_mark:
-
-- 二叉树的遍历和修改
-
 1. 排序数组 (30% - 40%)
 2. 找比 O(N)更小时间复杂度算法 (99%)
 3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
 4. 找到一个最大/最小值使某个条件被满足(90%)
+
+### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md):heavy_check_mark:
+
+1. Quick sort O(NlogN)
+2. Merge sort O(NlogN))
+3. Insertion Sort O(N^2)
+4. Bubble Sort O(N^2)
+
+### [Binary Tree](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Tree.md) :heavy_check_mark:
+
+1. 二叉树的遍历和修改
 
 ### [DFS BFS](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md):fountain_pen:
 
