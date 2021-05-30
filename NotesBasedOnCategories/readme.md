@@ -2,40 +2,40 @@
 
 ## Main ones
 
-- [Binary Search](#Binary-Search)
-- [Binary Tree](#Binary-Tree)
-- [Sorting Methods](#Sorting-Methods)
-- [DFS BFS](#DFS-BFS)
-- [Trie](#Trie)
-- [Heap (MinHeap / MaxHeap)](<#Heap-(MinHeap-/-MaxHeap)>)
-- [Dynamic Programming](#Dynamic-Programming)
-- [Two Pointers / PreSum](#Two-Pointers-/-PreSum)
-- [Union Find](#Union-Find)
+- [Binary Search :heavy_check_mark:](#Binary-Search)
+- [Binary Tree :heavy_check_mark:](#Binary-Tree)
+- [Sorting Methods :heavy_check_mark:](#Sorting-Methods)
+- [DFS BFS:fountain_pen:](#DFS-BFS)
+- [Trie:heavy_check_mark:](#Trie)
+- [Heap (MinHeap / MaxHeap):heavy_check_mark:](<#Heap-(MinHeap-/-MaxHeap)>)
+- [Dynamic Programming:fountain_pen:](#Dynamic-Programming)
+- [Two Pointers / PreSum:fountain_pen:](#Two-Pointers-/-PreSum)
+- [Union Find:heavy_check_mark:](#Union-Find)
 
 ## Others
 
 - [Monotonic Queue](#Monotonic-Queue)
 - [Topological Sort](#Topological-Sort)
 
-### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search.md) :heavy_check_mark:
+### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search.md)
 
 1. 排序数组 (30% - 40%)
 2. 找比 O(N)更小时间复杂度算法 (99%)
 3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
 4. 找到一个最大/最小值使某个条件被满足(90%)
 
-### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md):heavy_check_mark:
+### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md)
 
 1. Quick sort O(NlogN)
 2. Merge sort O(NlogN))
 3. Insertion Sort O(N^2)
 4. Bubble Sort O(N^2)
 
-### [Binary Tree](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Tree.md) :heavy_check_mark:
+### [Binary Tree](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Tree.md)
 
 1. 二叉树的遍历和修改
 
-### [DFS BFS](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md):fountain_pen:
+### [DFS BFS](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md)
 
 - BFS - Breadth First Search
   1. 拓扑排序（100%）
@@ -57,14 +57,14 @@
   - 拓扑， 否则 overflow
   - 一切 BFS 可以解决的
 
-### [Trie](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Trie.md):heavy_check_mark:
+### [Trie](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Trie.md)
 
 1. 查找包含某个前缀的字符串是否存在字符串合集中
 2. 字符矩阵中找单词
 3. 字符矩阵中找 prefix 相同/不同的
 4. 模糊搜索某个单词
 
-### [Heap (MinHeap / MaxHeap)](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Heap.md):heavy_check_mark:
+### [Heap (MinHeap / MaxHeap)](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Heap.md)
 
 1. **动态求极值**（动态：第 k 小/大的数），且复杂度 O(NlogK) 其中 logk 时间对数据进行操作
 2. 多路归并 (merge K sorted list)
@@ -76,7 +76,7 @@
   - 查找某段区间最大或者最小
   - O(N)找第 k 大（要用快排的 partision）
 
-### [Dynamic Programming](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Dynamic%20Programming.md) :fountain_pen:
+### [Dynamic Programming](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Dynamic%20Programming.md)
 
 1. 求方案总数字(90%)
 2. 求最值(80%)
@@ -87,7 +87,7 @@
   - 输⼊数据⽆序(除了背包问题外，准确率 60%~70%)
   - 暴⼒算法已经是多项式时间复杂度（准确率 80%）
 
-### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md) :fountain_pen:
+### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md)
 
 1. 滑动窗口(90%)
 2. 时间复杂度 O(N)（80%）
@@ -96,7 +96,7 @@
 5. 回文 palindrome （50%）
 6. 前缀和 + 二维前缀和- :fountain_pen:
 
-### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Union%20Find.md):heavy_check_mark:
+### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Union%20Find.md)
 
 1. 需要查询图的联通状况
 2. 需要支持快速合并两个合集
@@ -106,7 +106,7 @@
 
 ## others
 
-### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Monotonic%20Queue.md) :heavy_check_mark:
+### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Monotonic%20Queue.md)
 
 1. 下一个大于 xxx
 2. 下一个小于 xxx
