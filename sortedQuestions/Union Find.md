@@ -190,3 +190,4 @@ LC399
 ### 检查是否有环
 
 思路： 只需要将边进行合并，并在合并之前判断是否已经联通即可，如果合并之前已经联通说明存在环。
+[LC 684. Redundant Connection](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/UnionFind/LC684.%20Redundant%20Connection.md)
