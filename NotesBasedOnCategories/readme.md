@@ -1,33 +1,41 @@
 # Notes based on categories
 
-### [Binary Search](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Binary%20Search.md) :heavy_check_mark:
+## Main ones
 
-1. 排序数组 (30% - 40%)
-2. 找比 O(N)更小时间复杂度算法 (99%)
-3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
-4. 找到一个最大/最小值使某个条件被满足(90%)
+- [Binary Search](#Binary-Search)
+- [Binary Tree](#Binary-Tree)
+- [Sorting Methods](#Sorting-Methods)
+- [DFS BFS](#DFS-BFS)
+- [Trie](#Trie)
+- [Heap (MinHeap / MaxHeap)](<#Heap-(MinHeap-/-MaxHeap)>)
+- [Dynamic Programming](#Dynamic-Programming)
+- [Two Pointers / PreSum](#Two-Pointers-/-PreSum)
+- [Union Find](#Union-Find)
 
-### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Two%20Pointers%20%26%20Sliding%20Window.md) :fountain_pen:
+## Others
 
-1. 滑动窗口(90%)
-2. 时间复杂度 O(N)（80%）
-3. 原地交换，不能使用额外空间(80%)
-4. 有 subarray / substring 关键词(50%)
-5. 回文 palindrome （50%）
-6. 前缀和 + 二维前缀和- :fountain_pen:
+- [Monotonic Queue](#Monotonic-Queue)
+- [Topological Sort](#Topological-Sort)
 
-### [Sorting Methods :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Sortings%20Methods.md)
+### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search.md) :heavy_check_mark:
+
+### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md):heavy_check_mark:
 
 - Quick sort O(NlogN)
 - Merge sort O(NlogN))
 - Insertion Sort O(N^2)
 - Bubble Sort O(N^2)
 
-### [Binary Tree :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Binary%20Tree.md)
+### [Binary Tree](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Tree.md) :heavy_check_mark:
 
 - 二叉树的遍历和修改
 
-### [DFS BFS :fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md)
+1. 排序数组 (30% - 40%)
+2. 找比 O(N)更小时间复杂度算法 (99%)
+3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
+4. 找到一个最大/最小值使某个条件被满足(90%)
+
+### [DFS BFS](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md):fountain_pen:
 
 - BFS - Breadth First Search
   - 拓扑排序（100%）
@@ -45,22 +53,14 @@
   - 问题木星：求出所有满⾜条件的“排列”
   - 判断条件：组合中的元素是顺序相关的
 
-### [Dynamic Programming:fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Dynamic%20Programming.md)
-
-### [Union Find :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Union%20Find.md)
-
-1. 需要查询图的联通状况
-2. 需要支持快速合并两个合集
-3. 检测是否有环 - 将边合并，如果在合并之前就同元，那么就有环
-4. 确定无向图的连通分量
-5. 亲戚问题，是否同个祖先
-
-### [Trie :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Trie.md)
+### [Trie](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Trie.md):heavy_check_mark:
 
 1. 查找包含某个前缀的字符串是否存在字符串合集中
 2. 字符矩阵中找单词
+3. 字符矩阵中找 prefix 相同/不同的
+4. 模糊搜索某个单词
 
-### [Heap (MinHeap / MaxHeap) :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Heap.md)
+### [Heap (MinHeap / MaxHeap)](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Heap.md):heavy_check_mark:
 
 1. **动态求极值**（动态：第 k 小/大的数），且复杂度 O(NlogK) 其中 logk 时间对数据进行操作
 2. 多路归并
@@ -74,9 +74,28 @@
 - O(N)找第 k 大（要用快排的 partision）
 - merge K sorted list
 
+### [Dynamic Programming](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Dynamic%20Programming.md):fountain_pen:
+
+### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md) :fountain_pen:
+
+1. 滑动窗口(90%)
+2. 时间复杂度 O(N)（80%）
+3. 原地交换，不能使用额外空间(80%)
+4. 有 subarray / substring 关键词(50%)
+5. 回文 palindrome （50%）
+6. 前缀和 + 二维前缀和- :fountain_pen:
+
+### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Union%20Find.md):heavy_check_mark:
+
+1. 需要查询图的联通状况
+2. 需要支持快速合并两个合集
+3. 检测是否有环 - 将边合并，如果在合并之前就同元，那么就有环
+4. 确定无向图的连通分量
+5. 亲戚问题，是否同个祖先
+
 ## others
 
-### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Monotonic%20Queue.md) :heavy_check_mark:
+### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Monotonic%20Queue.md) :heavy_check_mark:
 
 1. 下一个大于 xxx
 2. 下一个小于 xxx
@@ -84,4 +103,4 @@
 4. 有一堆 digits，找最大/最小的排列方式
 5. 对连续性有一定要求的？
 
-### [Topological Sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Topological.md)
+### [Topological Sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Topological.md)
