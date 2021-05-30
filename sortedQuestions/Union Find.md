@@ -3,7 +3,9 @@
 学习 https://mp.weixin.qq.com/s/aHdMcSAu2cpHgRq46yW3dw  
 -[Hints to Use](#Hints-to-Use)  
 -[基本操作](#基本操作)  
--[并查集模板](#并查集模板)
+-[并查集模板](#并查集模板)  
+-[带权并查集](#带权并查集)  
+-[#检查是否有环](#检查是否有环)
 
 ### Intro
 
@@ -185,9 +187,14 @@ class UnionFind{
 ### 带权并查集
 
 权要有可传导性  
-LC399
+[LC399. Evaluate Division](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/UnionFind/LC399.%20Evaluate%20Division.md)
 
 ### 检查是否有环
 
-思路： 只需要将边进行合并，并在合并之前判断是否已经联通即可，如果合并之前已经联通说明存在环。
+```
+if union.isConnected(nodea, nodeb) return false
+union.union(nodea, nodeb)
+```
+
+思路： 只需要将边进行合并，并在合并之前判断是否已经联通即可，如果合并之前已经联通说明存在环。  
 [LC 684. Redundant Connection](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/UnionFind/LC684.%20Redundant%20Connection.md)

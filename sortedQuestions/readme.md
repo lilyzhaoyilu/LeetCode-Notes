@@ -1,4 +1,4 @@
-# Sorted Questions
+# Notes based on categories
 
 ### [Binary Search](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Binary%20Search.md) :heavy_check_mark:
 
@@ -45,11 +45,17 @@
   - 问题木星：求出所有满⾜条件的“排列”
   - 判断条件：组合中的元素是顺序相关的
 
-### Dynamic Programming
+### [Dynamic Programming:fountain_pen:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Dynamic%20Programming.md)
 
-### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Union%20Find.md)
+### [Union Find :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Union%20Find.md)
 
-### [Trie](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Trie.md) :heavy_check_mark:
+1. 需要查询图的联通状况
+2. 需要支持快速合并两个合集
+3. 检测是否有环 - 将边合并，如果在合并之前就同元，那么就有环
+4. 确定无向图的连通分量
+5. 亲戚问题，是否同个祖先
+
+### [Trie :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/sortedQuestions/Trie.md)
 
 1. 查找包含某个前缀的字符串是否存在字符串合集中
 2. 字符矩阵中找单词
