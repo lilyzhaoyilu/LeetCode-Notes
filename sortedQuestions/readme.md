@@ -45,7 +45,7 @@
   - 问题木星：求出所有满⾜条件的“排列”
   - 判断条件：组合中的元素是顺序相关的
 
-#### Dynamic Programming
+### Dynamic Programming
 
 ### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Union%20Find.md)
 
@@ -54,10 +54,13 @@
 1. 查找包含某个前缀的字符串是否存在字符串合集中
 2. 字符矩阵中找单词
 
-#### Heap (MinHeap / MaxHeap)
+### [Heap (MinHeap / MaxHeap) :heavy_check_mark:](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/Heap.md)
 
-1. 动态求极值（动态：第 k 小/大的数），且复杂度 O(NlogK)
-2. logk 时间对数据进行操作
+1. **动态求极值**（动态：第 k 小/大的数），且复杂度 O(NlogK) 其中 logk 时间对数据进行操作
+2. 多路归并
+3. topK 应用 固定反堆
+4. 可以带参/带权
+
    不能：
 
 - 查询比某个数大的最小值/接近值（二叉树或者 binary

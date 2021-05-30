@@ -1,4 +1,4 @@
-# Heap 堆
+# Heap 堆 （动态求极值）
 
 -[Hints to Use](#Hints-to-Use)  
 -[复杂度](#Complexity)  
@@ -13,9 +13,7 @@
 2. 要求 logn 时间对数据进⾏操作(40%)
 3. [topK](#四大应用：topK)
 4. [多路归并](#多路归并)
-5. 带权最短路径
-6. 因子分解
-7. 堆排序
+5. [带权最短距离-dijkstra](#四大应用：带权最短距离-dijkstra)
 
 #### 不能解决的问题
 
@@ -128,6 +126,11 @@ child = i, parent = Math.floor(i - 1 / 2)
 
 ### 四大应用：带权最短距离-dijkstra
 
+[LC 787. Cheapest Flights Within K Stops](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC787.%20Cheapest%20Flights%20Within%20K%20Stops.md)
+
 ### 四大应用：因子分解
+
+本质是在一个集合（数组）里动态求极值，再将求出的新的值放到备选 pool 里。备选 pool 和怎么选是由 heap 完成的。多路归并。
+[LC 264. Ugly Number II](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)
 
 ### 四大应用：堆排序

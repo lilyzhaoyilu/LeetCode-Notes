@@ -1,5 +1,6 @@
 # Topological Sort
 
+继续学习https://a91algo.herokuapp.com/solutionDetail?type=2&id=6&max_id=7  
 https://adelachao.medium.com/graph-topological-sort-javascript-implementation-1cc04e10f181  
 练习题  
 https://www.lintcode.com/problem/topological-sorting/description  
