@@ -38,20 +38,24 @@
 ### [DFS BFS](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md):fountain_pen:
 
 - BFS - Breadth First Search
-  - 拓扑排序（100%）
-  - 出现连通块的关键词（100%）
-  - 分层遍历（100%）
-  - 简单图最短路径（100%）
-  - 给定一个变换规则，从初始状态到最终状态最少走几步（100%）
+  1. 拓扑排序（100%）
+  2. 出现连通块的关键词（100%）connected component
+  3. 分层遍历（100%）
+  4. 简单图最短路径（100%）
+  5. 给定一个变换规则，从初始状态到最终状态最少走几步（100%）
 - DFS - Depth First Search
-  - 满足某个条件的所有解决方案(99%)
-  - 二叉树问题(90%)
-  - 组合问题(95%)
-    - 问题模型：求出所有满⾜条件的“组合”
-    - 判断条件：组合中的元素是顺序⽆关的
-  - 排列问题(95%)
-  - 问题木星：求出所有满⾜条件的“排列”
+  1. 满足某个条件的所有解决方案(99%)
+  2. 二叉树问题(90%)
+  3. 组合问题(95%)
+  - 问题模型：求出所有满⾜条件的“组合”
+  - 判断条件：组合中的元素是顺序⽆关的
+  4. 排列问题(95%)
+  - 问题模型：求出所有满⾜条件的“排列”
   - 判断条件：组合中的元素是顺序相关的
+- **不用 DFS 的场景**
+  - 连通块， 否则 Stackoverflow
+  - 拓扑， 否则 overflow
+  - 一切 BFS 可以解决的
 
 ### [Trie](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Trie.md):heavy_check_mark:
 
@@ -63,18 +67,25 @@
 ### [Heap (MinHeap / MaxHeap)](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Heap.md):heavy_check_mark:
 
 1. **动态求极值**（动态：第 k 小/大的数），且复杂度 O(NlogK) 其中 logk 时间对数据进行操作
-2. 多路归并
+2. 多路归并 (merge K sorted list)
 3. topK 应用 固定反堆
 4. 可以带参/带权
 
-   不能：
+- 不能：
+  - 查询比某个数大的最小值/接近值（二叉树或者 binary
+  - 查找某段区间最大或者最小
+  - O(N)找第 k 大（要用快排的 partision）
 
-- 查询比某个数大的最小值/接近值（二叉树或者 binary
-- 查找某段区间最大或者最小
-- O(N)找第 k 大（要用快排的 partision）
-- merge K sorted list
+### [Dynamic Programming](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Dynamic%20Programming.md) :fountain_pen:
 
-### [Dynamic Programming](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Dynamic%20Programming.md):fountain_pen:
+1. 求方案总数字(90%)
+2. 求最值(80%)
+3. 求可行性(80%)
+
+- 不适用场景
+  - 找所有具体的⽅案（准确率 99%）
+  - 输⼊数据⽆序(除了背包问题外，准确率 60%~70%)
+  - 暴⼒算法已经是多项式时间复杂度（准确率 80%）
 
 ### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md) :fountain_pen:
 
