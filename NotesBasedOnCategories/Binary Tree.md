@@ -1,5 +1,9 @@
 # Binary Tree and BFS DFS
 
+二叉树的高度是 h，也就是 logN。也就是说每条根到叶子的线路的时长为 logN。
+
+需要把一个数一直除以 2 直到 1 的时间也是 logN
+
 学习 https://github.com/azl397985856/leetcode/blob/master/thinkings/tree.md
 
 - [Breadth First Search](#BFS-Breadth-First-Search)

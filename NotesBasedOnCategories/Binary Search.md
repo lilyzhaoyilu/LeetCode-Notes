@@ -32,6 +32,60 @@
 4. 根据比较的结果收缩区间，放弃非法解（也就是二分）
 5. 注意是否有无重复元素
 
+### 母模板
+
+寻找最左插入位置 ->右边第一个数比他大
+
+```JavaScript
+function binarySearchMostLeftInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor(left + (right - left) / 2);
+    //mid可能是想要的，但再找找还有想要的吗
+    if (nums[mid] == target)
+      right = mid - 1;
+    //mid有可能是想要的，但更多想要的可能在左边
+    if (nums[mid] > target)
+      right = mid - 1;
+
+    //答案不可能在[left, mid]区间内
+    if (nums[mid] < target)
+      left = mid + 1;
+
+  }
+  // 检查是否越界，区别在于不用检查是否等于
+  //如果要找满足条件的值，再加一个 nums[left] === target 即可
+  if (left >= nums.length) return -1;
+  return left;
+}
+
+//寻找最右插入位置 ->左边这个数比他小
+function binarySearchMostRightInsert(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor(left + (right - left) / 2);
+
+    //[mid,left]不是想要的
+    if (nums[mid] > target)
+      right = mid - 1;
+
+    //mid可能是想要的，但是再向右找一下有没有其他的
+    if (nums[mid] == target)
+
+      left = mid + 1;
+    //[left, mid]绝对不是想要的
+    if (nums[mid] < target)
+      left = mid + 1;
+
+  }
+  // 检查是否越界，区别在于不用检查是否等于
+  if (left >= nums.length) return -1;
+  return left;
+}
+```
+
 ### 题型 & 思路
 
 - [题型一：查找一个数](#题型一：查找一个数)
