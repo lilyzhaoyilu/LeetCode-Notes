@@ -7,7 +7,7 @@
 - [Sorting Methods :heavy_check_mark:](#Sorting-Methods)
 - [DFS BFS:fountain_pen:](#DFS-BFS)
 - [Trie:heavy_check_mark:](#Trie)
-- [Heap (MinHeap / MaxHeap):heavy_check_mark:](<#Heap-(MinHeap-/-MaxHeap)>)
+- [Heap (MinHeap / MaxHeap):heavy_check_mark:](#heap-minheap--maxheap)
 - [Dynamic Programming:fountain_pen:](#Dynamic-Programming)
 - [Two Pointers / PreSum:fountain_pen:](#Two-Pointers-/-PreSum)
 - [Union Find:heavy_check_mark:](#Union-Find)

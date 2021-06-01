@@ -34,7 +34,7 @@ Disjoint Sets: in Math, two sets are said to be disjoint setts if they have no e
 - Time : 每一个
   Union O(1)? logCharacterLength?
   Find O(1)
-  路径压缩 logN ?
+  路径压缩 logN 严格趋近于 O(1)
   所有的就是 O(N)
 - Space: O(N)
 
