@@ -1,9 +1,5 @@
 ## Dynamic Programming
 
-[动态规划专题](https://leetcode-solution.cn/solutionDetail?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fazl397985856%2Fleetcode%2Fcontents%2Fthinkings%2Fdynamic-programming.md&type=1)  
-[记忆化递归转变动态规划](https://mp.weixin.qq.com/s/afRM6owOL_KTKekmW7wzpQ)  
-[还有一些来自 Lucifer 的插件](https://chrome.google.com/webstore/detail/leetcode-cheatsheet/fniccleejlofifaakbgppmbbcdfjonle?hl=en-US%E3%80%82)
-
 ### hints to use
 
 1. 求方案总数字(90%)
@@ -33,11 +29,96 @@ O（状态总数 \* 决策树）
 
 ## 常见题型
 
-- [常见题型:最长上升子序列](#常见题型:最长上升子序列)
-- [常见题型:最长公共子序列](#常见题型:最长公共子序列)
-- [常见题型:爬楼梯](#常见题型:爬楼梯)
+- [常见题型:背包问题](#常见题型:背包问题)
+- [常见题型:区间型](#常见题型:区间型)
+- [常见题型:匹配型](#常见题型:匹配型)
+- [常见题型:划分性](#常见题型:划分性)
+- [常见题型:接龙型-线性](#常见题型:接龙型-线性)
+- [常见题型:数位型](#常见题型:数位型)
+- [常见题型:概率性](#常见题型:概率性)
+- [常见题型:博弈型](#常见题型:博弈型)
 
-### 常见题型:最长上升子序列
+### 常见题型:背包问题
+
+**定义**：给定一个 target(可以是数字/字符串)和一个数组(可以是数字/字符串)。问：能否使用数组中的元素做各种排列组合得到 target。
+**状态**  
+dp[i][j] 表⽰[0..i]⾥挑若⼲个数是否能组成和为 j
+
+**方程**
+
+1. 组合问题 dp[i] += dp[i - num]
+2. True & false dp[i] = dp[i] || dp[i-num]
+3. 最值 dp[i] = min(dp[i], dp[i - num] + 1)
+
+**背包类型**
+
+1. **0-1 背包**: 数组中元素不可重复使用。  
+   nums 外 正  
+   target 内 倒
+
+2. **完全背包**：数组中元素可以被重复使用  
+   nums 外 正  
+   target 内 正
+
+3. **组合问题**：考虑元素顺序  
+   target 外
+   nums 内
+
+### 常见题型:区间型
+
+**定义**: 题目中有 subarray/ substring, ⼤区间依赖⼩区间  
+**状态**: ⽤ dp[i][j] 表⽰数组/字符串中 i, j 这⼀段区间的最优值/可⾏性/⽅案总数  
+**方程**: dp[i][j] = max/min/sum/or(dp[i,j 之内更⼩的若⼲区间])
+
+### 常见题型:匹配型
+
+**定义**:通常给出两个字符串，两个字符串的匹配值依赖于两个字符串传前缀的匹配值 通常可以滚动优化  
+**状态**:dp[i][j] 表示 s[i..j]
+
+### 常见题型:划分性
+
+**定义**: 是前缀型动态规划的⼀种, 有前缀的思想
+
+**状态**:
+如果指定了要划分为⼏个部分：  
+dp[i][j] 表⽰前 i 个数/字符划分为 j 个 部分的最优值/⽅案数/可⾏性
+
+如果没有指定划分为⼏个部分:  
+dp[i] 表⽰前 i 个数/字符划分为若⼲个 部分的最优值/⽅案数/可⾏性
+
+### 常见题型:接龙型-线性
+
+线性
+
+单串：LIS
+双串：LCS
+
+- [经典母题:最长上升子序列](#经典母题:最长上升子序列)
+  通常会给⼀个接⻰规则，问你最⻓的⻰有多⻓
+
+LIS 的⼆分做法选择性的掌握，但并不是所有的接⻰型 DP 都可以⽤⼆分来优化
+**状态**  
+dp[i] 表⽰以坐标为 i 的元素结尾的最⻓⻰的⻓度
+**⽅程**  
+dp[i] = max(dp[j] + 1), j 的后⾯可以接上 i
+
+### 常见题型:数位型
+
+**状态**  
+dp[i][j] 其中 i 为数字的长度， j 为最后一位的数。  
+比如 dp[3][2] 表示这个数一共三位，最后一位是 2 的情况
+
+### 常见题型:概率性
+
+### 常见题型:博弈型
+
+## 经典母题
+
+- [经典母题:最长上升子序列](#经典母题:最长上升子序列)
+- [经典母题:最长公共子序列](#经典母题:最长公共子序列)
+- [经典母题:爬楼梯](#经典母题:爬楼梯)
+
+### 经典母题:最长上升子序列 LIS
 
 学习 https://lucifer.ren/blog/2020/06/20/LIS/  
 [LC 300](https://leetcode-cn.com/problems/longest-increasing-subsequence/)  
@@ -64,7 +145,7 @@ class Solution:
         return  ans
 ```
 
-### 常见题型:最长公共子序列
+### 常见题型:最长公共子序列 LCS
 
 学习 https://lucifer.ren/blog/2020/02/13/LCS/  
 [LC1143](https://leetcode-cn.com/problems/longest-common-subsequence/)  
@@ -97,10 +178,8 @@ class Solution:
 
 ### 常见题型:爬楼梯
 
-**状态：**
-
 1. 一维通常是 dp[i] 表示以 nums[i] 结尾的 xxxx
-2. 二维通常是 dp[i][j] 表示以 grid[i][j] 结尾的 xxxx
+1. 二维通常是 dp[i][j] 表示以 grid[i][j] 结尾的 xxxx
 
 **枚举**：一维就是一层循环枚举所有的 nums，二维就是两层循环枚举所有的 grid
 
@@ -113,70 +192,11 @@ class Solution:
    dp[i][j] = dp[i - 1][j] + dp[i][j-1]，这也叫递推式，因为不涉及决策。
 3. 根转移方程不难看出， 这种题目通常都可以滚动数组优化
 
-![](https://tva1.sinaimg.cn/large/0081Kckwly1glpom6u30yj30u00v1n61.jpg)
+[滚动数组图片](https://tva1.sinaimg.cn/large/0081Kckwly1glpom6u30yj30u00v1n61.jpg)  
 [LC70]
 
-### 常见题型
-
-1. 背包
-
-   **背包**  
-   状态 state
-   dp[i][j] 表⽰前 i 个数⾥挑若⼲个数是否能组成和为 j
-
-   ⽅程 function  
-    dp[i][j] = dp[i - 1][j] or dp[i - 1]j - A[i - 1]] 如果 j >=
-   A[i - 1]  
-    dp[i][j] = dp[i - 1][j] 如果 j < A[i - 1]  
-    第 i 个数的下标是 i - 1，所以⽤的是 A[i - 1] ⽽不是 A[i]  
-    初始化 initialization  
-    dp[0][0] = true  
-    dp[0][1...m] = false  
-    答案 answer  
-    使得 dp[n][v], 0 s <= v <= m 为 true 的最⼤ v
-
-   **多重背包**  
-    状态 state  
-    dp[i][j] 表⽰前 i 个物品挑出⼀些放到 j 的背包⾥的最⼤价值和  
-    ⽅程 function  
-    dp[i][j] = max(dp[i - 1]j - count _ A[i - 1]] + count _ V[i- 1])  
-   其中 0 <= count <= j / A[i - 1]  
-   初始化 initialization  
-   dp[0][0..m] = 0  
-   答案 answer  
-   dp[n][m]
-
-2. 区间型 - 题目中有 subarray/ substring  
-   ⼤区间依赖⼩区间  
-   ⽤ dp[i][j] 表⽰数组/字符串中 i, j 这⼀段区间的最优值/可⾏性/⽅案总数
-   状态 state  
-   dp[i][j] 表⽰数组/字符串中 i,j 这⼀段区间的最优值/可⾏性/⽅案总数
-   ⽅程 function  
-   dp[i][j] = max/min/sum/or(dp[i,j 之内更⼩的若⼲区间])
-
-3. 匹配型  
-   通常给出两个字符串，两个字符串的匹配值依赖于两个字符串传前缀的匹配值
-   通常可以滚动优化  
-   状态 dp[i][j] 表示 s[i..j]
-
-4. 划分性  
-    前缀型动态划分
-   如果指定了要划分为⼏个部分：
-   dp[i][j] 表⽰前 i 个数/字符划分为 j 个 部分的最优值/⽅案数/可⾏性
-   如果没有指定划分为⼏个部分:
-   dp[i] 表⽰前 i 个数/字符划分为若⼲个 部分的最优值/⽅案数/可⾏性
-   状态 state
-   指定了要划分为⼏个部分: dp[i][j] 表⽰前 i 个数/字符划分为 j 个部分的最优值/⽅案数/可⾏
-   性
-   没有指定划分为⼏个部分: dp[i] 表⽰前 i 个数/字符划分为若⼲个部分的最优值/⽅案数/可⾏
-   性
-
-5. 接龙型
-   通常会给⼀个接⻰规则，问你最⻓的⻰有多⻓
-   状态表⽰通常为: dp[i] 表⽰以坐标为 i 的元素结尾的最⻓⻰的⻓度
-   ⽅程通常是: dp[i] = max{dp[j] + 1}, j 的后⾯可以接上 i
-   LIS 的⼆分做法选择性的掌握，但并不是所有的接⻰型 DP 都可以⽤⼆分来优化
-   状态 state
-   状态表⽰通常为: dp[i] 表⽰以坐标为 i 的元素结尾的最⻓⻰的⻓度
-   ⽅程 function
-   dp[i] = max{dp[j] + 1}, j 的后⾯可以接上 i
+参考  
+[动态规划专题](https://leetcode-solution.cn/solutionDetail?url=https%3A%2F%2Fapi.github.com%2Frepos%2Fazl397985856%2Fleetcode%2Fcontents%2Fthinkings%2Fdynamic-programming.md&type=1)  
+[记忆化递归转变动态规划](https://mp.weixin.qq.com/s/afRM6owOL_KTKekmW7wzpQ)  
+[还有一些来自 Lucifer 的插件](https://chrome.google.com/webstore/detail/leetcode-cheatsheet/fniccleejlofifaakbgppmbbcdfjonle?hl=en-US%E3%80%82)
+[dp 题型参考知乎](https://zhuanlan.zhihu.com/p/126546914)
