@@ -88,6 +88,30 @@ var minSubArrayLen = function(target, nums) {
 };
 ```
 
+### 双指针 删除重复项
+
+由于是保留 k 个相同数字，对于前 k 个数字，我们可以直接保留。
+对于后面的任意数字，能够保留的前提是：与当前写入的位置前面的第 k 个元素进行比较，不相同则保留。
+
+```JavaScript
+var removeDuplicates = function(nums) {
+
+    var process = function(nums, k){
+        let slow = 0
+        for(let fast = 0; fast < nums.length; fast++){
+            if( slow < k || nums[slow - k] != nums[fast]){
+                nums[slow] = nums[fast]
+                slow++
+            }
+        }
+        return slow;
+    }
+
+    return process(nums, 2)
+};
+
+```
+
 # 前缀和
 
 ## 前缀和公式
