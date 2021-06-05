@@ -5,7 +5,7 @@
 - [Binary Search :heavy_check_mark:](#Binary-Search)
 - [Binary Tree :heavy_check_mark:](#Binary-Tree)
 - [Sorting Methods :heavy_check_mark:](#Sorting-Methods)
-- [DFS BFS:fountain_pen:](#DFS-BFS)
+- [Search & BFS & DFS & BackTrack:fountain_pen:](#Search)
 - [Trie:heavy_check_mark:](#Trie)
 - [Heap (MinHeap / MaxHeap):heavy_check_mark:](#heap-minheap--maxheap)
 - [Dynamic Programming:fountain_pen:](#Dynamic-Programming)
@@ -36,7 +36,7 @@
 
 1. 二叉树的遍历和修改
 
-### [DFS BFS](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md)
+### [Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/sortedQuestions/BFS%20DFS.md)
 
 - BFS - Breadth First Search
   1. 拓扑排序（100%）
@@ -88,14 +88,14 @@
   - 输⼊数据⽆序(除了背包问题外，准确率 60%~70%)
   - 暴⼒算法已经是多项式时间复杂度（准确率 80%）
 
-### [Two Pointers / PreSum](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md)
+### [Two Pointers / Sliding Window](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md)
 
 1. 滑动窗口(90%)
 2. 时间复杂度 O(N)（80%）
 3. 原地交换，不能使用额外空间(80%)
 4. 有 subarray / substring 关键词(50%)
 5. 回文 palindrome （50%）
-6. 前缀和 + 二维前缀和- :fountain_pen:
+6. 前缀和 + 二维前缀和 （见下）
 
 ### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Union%20Find.md)
 
