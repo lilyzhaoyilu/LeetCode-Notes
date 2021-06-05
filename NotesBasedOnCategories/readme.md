@@ -14,10 +14,11 @@
 
 ## Others
 
+- [Presum and Prefix](#Presum-and-Prefix)
 - [Monotonic Queue](#Monotonic-Queue)
 - [Topological Sort](#Topological-Sort)
 
-### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search.md)
+### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search%20Updated.md)
 
 1. 排序数组 (30% - 40%)
 2. 找比 O(N)更小时间复杂度算法 (99%)
@@ -105,6 +106,8 @@
 5. 亲戚问题，是否同个祖先
 
 ## others
+
+### [Presum and Prefix](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/preSum%20and%20Prefix.md)
 
 ### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Monotonic%20Queue.md)
 
