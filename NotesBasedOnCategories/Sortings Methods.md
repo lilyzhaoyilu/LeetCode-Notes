@@ -59,7 +59,7 @@ var partision = function(nums, start, end){
 
 ### Complexity
 
-- Time complexity: O(nlogn) (最坏复杂度)
+- Time complexity: O(nlogn) (最坏复杂度) O(MlogN)M 是字符串平均长度 N 是字符串数量
 - Space complexity: O(n)
 
 ### 模板
