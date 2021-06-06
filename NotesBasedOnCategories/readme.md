@@ -24,6 +24,7 @@
 2. 找比 O(N)更小时间复杂度算法 (99%)
 3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
 4. 找到一个最大/最小值使某个条件被满足(90%)
+5. 通过merge sort 或者 前缀和构建有序数组 
 
 ### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md)
 
@@ -47,12 +48,7 @@
 - DFS - Depth First Search
   1. 满足某个条件的所有解决方案(99%)
   2. 二叉树问题(90%)
-  3. 组合问题(95%)
-  - 问题模型：求出所有满⾜条件的“组合”
-  - 判断条件：组合中的元素是顺序⽆关的
-  4. 排列问题(95%)
-  - 问题模型：求出所有满⾜条件的“排列”
-  - 判断条件：组合中的元素是顺序相关的
+  3. 排列（顺序相关）组合（顺序无关）问题(95%)
 - **不用 DFS 的场景**
   - 连通块， 否则 Stackoverflow
   - 拓扑， 否则 overflow
