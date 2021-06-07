@@ -4,6 +4,7 @@
 
 - [Binary Search :heavy_check_mark:](#Binary-Search)
 - [Binary Tree :heavy_check_mark:](#Binary-Tree)
+- [Divide and Counqure 分治，merge sort](#Divide-and-Counqure-分治-merge-sort)
 - [Sorting Methods :heavy_check_mark:](#Sorting-Methods)
 - [Search & BFS & DFS & BackTrack:fountain_pen:](#Search)
 - [Trie:heavy_check_mark:](#Trie)
@@ -53,6 +54,8 @@
   - 连通块， 否则 Stackoverflow
   - 拓扑， 否则 overflow
   - 一切 BFS 可以解决的
+
+### [Divide and Counqure 分治，merge sort]()
 
 ### [Trie](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Trie.md)
 

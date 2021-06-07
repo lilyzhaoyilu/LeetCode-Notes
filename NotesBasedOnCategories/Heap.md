@@ -25,7 +25,9 @@
 
 - time complexity:  
   build heap: O(N) N is the input number of elements  
-  heapify: O(logN) with (n-1)calls on heapify // 下沉和树高度正相关，为 logH。由于二叉堆是一颗完全二叉树，因此可以为 LogN，N 是节点个数。  
+  heapify: O(logN) with (n-1)calls on heapify // 下沉和树高度正相关，为 logH。由于二叉堆是一颗完全二叉树，因此可以为 LogN，N 是节点个数。    
+  也就是logN 完成插入和删除  
+  O(1)可以peak  
   （当用数组模拟堆的时候，选择 push 来添加新的节点，因为在尾部添加为 O(1)）
 
 ## 堆定义
