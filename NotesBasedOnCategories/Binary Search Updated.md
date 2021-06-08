@@ -29,8 +29,11 @@
 
 ## 二分两大模板
 
-寻找最左插入位置 ->右边第一个数比他大
-最左二分不断收缩右边界，最终返回左边界
+返回： 他应该在的新位置
+
+寻找最左插入位置 -> 这个数第一个出现的位置 || 右边的数大于它
+console.log(lsearch([1, 1, 1, 1, 1, 2, 3, 4, 5], 1)) => 1
+console.log(lsearch([1, 2, 3, 3, 4, 5], 3)) => 2
 
 ```JavaScript
 function binarySearchMostLeftInsert(nums, target) {
@@ -55,8 +58,17 @@ function binarySearchMostLeftInsert(nums, target) {
   if (left >= nums.length) return -1;
   return left;
 }
+```
+返回： 他应该在的新位置
+寻找最右插入位置 -> 左边这个数小于等于他 || 这个数最后出现的位置
+console.log(bright([3, 5, 8, 9, 11], 9)) -> 4
+console.log(bright([3, 5, 8, 9, 9, 9, 9, 9, 11], 9)) -> 8
+console.log(bright([1, 2, 3], 3)) -> 3 
+console.log(bright([1, 2, 3], 5)) -> 3 
 
-//寻找最右插入位置 ->左边这个数比他小
+
+```JavaScript
+
 function binarySearchMostRightInsert(nums, target) {
   let left = 0;
   let right = nums.length - 1;
@@ -91,7 +103,7 @@ function binarySearchMostRightInsert(nums, target) {
 
 #### 二分四大应用一：能力检测
 
-能力检测二分一般是：定义函数 possible， 参数是 mid，返回值是布尔值。外层根据返回值调整”解空间”。  
+能力检测二分一般是：定义函数 possible， 参数是 mid，返回值是布尔值。外层根据返回值调整 “解空间”。  
 LC475
 
 ```Python
@@ -137,12 +149,14 @@ def count_bs(nums, k):
   return l
 ```
 
+构建有序数组： 前缀和（当elements >= 0)
 #### 二分四大应用三：前缀和二分
 
 如果数组全是正的，那么其前缀和就是一个严格递增的数组，基于这个特性，我们可以在其之上做二分。
 也可以在前缀和头部增加[0]简化 i-1 的判断。
 题目： [LC327](https://leetcode-cn.com/problems/count-of-range-sum/)，用到 merge sort + divide & conqure
 
+构建有序数组： 分治 -> 保证index不乱的同时还能把数组划分成俩升序数组
 #### 二分四大应用四：插入排序二分
 
 [剑指 51](https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)用到 merge sort + divide & conqure  

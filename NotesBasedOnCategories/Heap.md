@@ -32,7 +32,7 @@
 
 ## 堆定义
 
-### 二叉堆 - 用完全二叉树实现的堆
+### 二叉堆 Binary Heap - 用完全二叉树实现的堆
 
 Heap is a binary tree with two special properties:
 

@@ -21,9 +21,8 @@
 
 ### [Binary Search](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Binary%20Search%20Updated.md)
 
-1. 排序数组 (30% - 40%)
-2. 找比 O(N)更小时间复杂度算法 (99%)
-3. 找到数组中的某个位置，使得左或右某半部分不满足条件(100%)
+1. 找比 O(N)更小时间复杂度算法 (99%)
+3. 有限解空间，可以通过搜索排除某个区域不符合答案(100%)
 4. 找到一个最大/最小值使某个条件被满足(90%)
 5. 通过merge sort 或者 前缀和构建有序数组 
 
@@ -55,7 +54,8 @@
   - 拓扑， 否则 overflow
   - 一切 BFS 可以解决的
 
-### [Divide and Counqure 分治，merge sort]()
+### [Divide and Counqure 分治，merge sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Divede%20and%20Conqure.md)
+1. 对index大小有一定要求，且排序能让它复杂度更低
 
 ### [Trie](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Trie.md)
 
@@ -107,13 +107,15 @@
 ## others
 
 ### [Presum and Prefix](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/preSum%20and%20Prefix.md)
+1. nums[i] >= 0, presum就是一个升序数组
+2. presum求得之后，可以任意被打乱顺序，仍代表某 presum[j] - presum[i - 1] (不过这时候要记得presum =[0])
+
 
 ### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Monotonic%20Queue.md)
 
-1. 下一个大于 xxx
-2. 下一个小于 xxx
-3. 如果有 nums， 其每个 digit 最小的排列方法是递增栈，最大的排列方式是递减栈
-4. 有一堆 digits，找最大/最小的排列方式
-5. 对连续性有一定要求的？
+1. 第一个大于/小于 xxx (就是找第一个破坏规则的并且记录到ans里)
+2. 如果有 nums， 其每个 digit 最小的排列方法是递增栈，最大的排列方式是递减栈
+3. 有一堆 digits，找最大/最小的排列方式
+4. 对连续性有一定要求的？
 
 ### [Topological Sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Topological.md)
