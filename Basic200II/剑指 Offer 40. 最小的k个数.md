@@ -2,6 +2,99 @@
 https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
 - [大根堆](#思路-大根堆)
 明天学习 https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/solution/jian-zhi-offer-40-zui-xiao-de-k-ge-shu-j-9yze/
+
+- [快速排序QuickSort](#思路-快速排序QuickSort)
+- [根据快排的on](#思路-根据快排的on)
+
+### 思路 根据快排的on
+本质是通过每次分一半来节省时间  
+时间复杂度是 N + N/2 + N/4 + n/6... ~= O(N)
+#### 代码 JavaScript
+
+```JavaScript
+var getLeastNumbers = function(arr, k) {
+    
+    var quickSort = function(arr, l, r){
+        if(l >= r) return;
+        // l 是哨兵
+        let i = l, j = r;
+
+        while(i < j){
+           while (i < j && arr[j] >= arr[l]) j--;
+            while (i < j && arr[i] <= arr[l]) i++;
+
+            swap(arr, j, i)
+        }
+        swap(arr, i, l)
+        if(k < i) return quickSort(arr, l, i - 1)
+        if(k > i) return quickSort(arr, i + 1, r)
+        return arr
+    }
+
+    var swap = function(arr, i, j){
+        let temp = arr[i] ;
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    quickSort(arr, 0, arr.length - 1)
+    // console.log(arr)
+    return arr.slice(0, k)
+
+
+
+};
+
+```
+
+#### 复杂度分析
+时间复杂度：O(N) </br>
+空间复杂度：
+### 思路 快速排序QuickSort
+要先 j-- 不然会误判
+#### 代码 JavaScript
+
+```JavaScript
+var getLeastNumbers = function(arr, k) {
+    
+    var quickSort = function(arr, l, r){
+        if(l >= r) return;
+        // l 是哨兵
+        let i = l, j = r;
+
+        while(i < j){
+           while (i < j && arr[j] >= arr[l]) j--;
+            while (i < j && arr[i] <= arr[l]) i++;
+
+            [arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+        console.log(arr, `l ${l}... i ${i}`, 'j', j,' :::', arr[l], arr[i])
+        swap(arr, i, l)
+        quickSort(arr, l, i - 1)
+        quickSort(arr, i + 1, r)
+    }
+
+    var swap = function(arr, i, j){
+        let temp = arr[i] ;
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    quickSort(arr, 0, arr.length - 1)
+    console.log(arr)
+    return arr.slice(0, k)
+
+
+
+};
+
+```
+
+#### 复杂度分析
+时间复杂度：O(NlogN) </br>
+空间复杂度：
+
+
 ### 思路 大根堆
 堆 - 大根堆 topk
 #### 代码 JavaScript
