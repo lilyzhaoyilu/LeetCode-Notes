@@ -87,7 +87,7 @@
   - 输⼊数据⽆序(除了背包问题外，准确率 60%~70%)
   - 暴⼒算法已经是多项式时间复杂度（准确率 80%）
 
-### [Two Pointers / Sliding Window](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Presum.md)
+### [Two Pointers / Sliding Window](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Two%20Pointers%20and%20Sliding%20Window.md)
 
 1. 滑动窗口(90%)
 2. 时间复杂度 O(N)（80%）
