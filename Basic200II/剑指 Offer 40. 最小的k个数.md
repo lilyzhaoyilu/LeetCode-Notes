@@ -4,9 +4,9 @@ https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/
 明天学习 https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/solution/jian-zhi-offer-40-zui-xiao-de-k-ge-shu-j-9yze/
 
 - [快速排序QuickSort](#思路-快速排序QuickSort)
-- [根据快排的on](#思路-根据快排的on)
+- [根据快排的O(N)](#思路-根据快排的O(N))
 
-### 思路 根据快排的on
+### 思路 根据快排的O(N)
 本质是通过每次分一半来节省时间  
 时间复杂度是 N + N/2 + N/4 + n/6... ~= O(N)
 #### 代码 JavaScript

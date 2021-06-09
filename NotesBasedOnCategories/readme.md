@@ -94,7 +94,6 @@
 3. 原地交换，不能使用额外空间(80%)
 4. 有 subarray / substring 关键词(50%)
 5. 回文 palindrome （50%）
-6. 前缀和 + 二维前缀和 （见下）
 
 ### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Union%20Find.md)
 
