@@ -116,5 +116,20 @@
 2. 如果有 nums， 其每个 digit 最小的排列方法是递增栈，最大的排列方式是递减栈
 3. 有一堆 digits，找最大/最小的排列方式
 4. 对连续性有一定要求的？
+5. 对O(N)继续优化成OlogN的时候，可以建立以单调栈。它
+5.1 作为接龙可以是每个可接龙值的最小值
+5.2 可以是升序单调栈，利用升序和index的关系，把双循环改成单循环
+```
+    countNotGreater(diff, nums){
+        let i = 0, ans = 0;
+        for(let j = 1; j < nums.length; j++){
+            while(nums[j] - nums[i] > diff){
+                i++
+            }
+            ans += j - i 
+        }
+        return ans
+    }
+```
 
 ### [Topological Sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Topological.md)

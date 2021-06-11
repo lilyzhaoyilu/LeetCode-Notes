@@ -122,7 +122,7 @@ def ability_test_bs(nums):
 #### 二分四大应用二：计数二分
 
 本质也是能力检测，因此和能力检测框架基本一致，大家对比理解一下。
-
+计数二分基本就是求第 k 大（或者第 k 小）的数。其核心思想是找到一个数 x，使得小于等于 x 的数恰好有 k 个。
 ```Python
 def count_bs(nums, k):
   def count_not_greater(mid):
