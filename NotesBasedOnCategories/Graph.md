@@ -78,47 +78,16 @@ var dfs = function(v){
 
 ## 常见算法
 
-### DIJKSTRA 是图中任意两点的最短距离。单源。
+### Bellman-ford - Shortest Path
+can 1) detect negative cycle
 
-如果不用堆的话没法保证每次都是最短的`路径`出现，图里有环的时候可能存在有超过一条路径到某个点的情况。比如`[[1,2,1],[2,3,2],[1,3,4]]`从1开始出发，有 1->2->3 和 1->3两条路径
+Time: O(NM) n-1 rounds and iterate through all m edges
+if no negative cycles, **all distances are final after n - 1 roudns**, because the shortest path can contain at most n - 1 edges
+(a graph without cycle mostly has n - 1 edges)
+possible more efficient: stop the algorithem if no distance can be reduced during a round
 
-算法的基本思想是贪心，每次都遍历所有邻居，并从中找到距离最小的，本质上是一种广度优先遍历。  
-这里我们借助**堆**这种数据结构，使得可以在 **logN** 的时间内找到 cost 最小的点。
-
-LC778
-
-### floyd_warshall 算法
-解决任意两点距离的算法，多远最短路径。也是单元最短路径的经典动态规划算法。相比上面的 dijkstra 算法， 由于其计算过程会把中间运算结果保存起来防止重复计算，因此其特别适合求图中任意两点的距离，基本思想是动态规划。该算法的时间复杂度是 O(N^3)空间复杂度是 O(N^2)，其中 N 为顶点个数。
-
-The
-following code constructs a distance matrix where distance[a][b] is the shortest
-distance between nodes a and b. First, the algorithm initializes distance using
-the adjacency matrix `graph` of the graph:
-```
-for (int i = 1; i <= n; i++) {
-  for (int j = 1; j <= n; j++) {
-    if (i == j) distance[i][j] = 0;
-    else if (graph[i][j]) distance[i][j] = graph[i][j];
-    else distance[i][j] = INF;
-  }
-}
-```
-After this, the shortest distances can be found as follows:
-```
-for (int k = 1; k <= n; k++) {
-  for (int i = 1; i <= n; i++) {
-    for (int j = 1; j <= n; j++) {
-    distance[i][j] = min(distance[i][j],
-    distance[i][k]+distance[k][j]);
-    }
-  }
-}
-
-```
-
-
-Bellman-ford
-
+**check negative cycle**
+run the algorithm N times, if the last round reduces any distance, the graph contains a negative cycle, regardless of the starting node. 
 ```
 def bell_man(edges, s):
     dis = defaultdict(lambda: math.inf)
@@ -151,3 +120,60 @@ def bell_man(edges, s):
   }
 
 ```
+### DIJKSTRA 是图中任意两点的最短距离。单源。
+
+以下是错的  
+*如果不用堆的话没法保证每次都是最短的`路径`出现，图里有环的时候可能存在有超过一条路径到某个点的情况。
+比如`[[1,2,1],[2,3,2],[1,3,4]]`从1开始出发，有 1->2->3 和 1->3两条路径*
+
+算法的基本思想是贪心，每次都遍历所有邻居，并从中找到距离最小的，本质上是一种广度优先遍历。  O(NM)
+这里我们借助**堆**这种数据结构，使得可以在 **logN** 的时间内找到 cost 最小的点。
+O(N + mlogM) m edges, n nodes => O(NlogN)
+because the algorithm goes through all nodes of the graph and adds for each edge at most one distance to the priority queue.
+
+A remarkable property in Dijkstra’s algorithm is that whenever a node is
+selected, its distance is final.
+不能有负权  
+
+
+LC778
+steps  
+1) initiate all distance to be infinite, and starting node to be 0
+2) selecte a node that is not visited & the distance is as small as possible (1st one is the starting node)
+3) when a node is selected, the algorithm goes through all edges that start at the node and reduces the distances using them
+4) the remarkable property 
+
+
+
+
+### floyd_warshall 算法
+解决任意两点距离的算法，多远最短路径。也是单元最短路径的经典动态规划算法。相比上面的 dijkstra 算法， 由于其计算过程会把中间运算结果保存起来防止重复计算，因此其特别适合求图中任意两点的距离，基本思想是动态规划。  
+该算法的时间复杂度是 O(N^3)空间复杂度是 O(N^2)，其中 N 为顶点个数。
+
+The
+following code constructs a distance matrix where distance[a][b] is the shortest
+distance between nodes a and b. First, the algorithm initializes distance using
+the adjacency matrix `graph` of the graph:
+```
+for (int i = 1; i <= n; i++) {
+  for (int j = 1; j <= n; j++) {
+    if (i == j) distance[i][j] = 0;
+    else if (graph[i][j]) distance[i][j] = graph[i][j];
+    else distance[i][j] = INF;
+  }
+}
+```
+After this, the shortest distances can be found as follows:
+```
+for (int k = 1; k <= n; k++) {
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
+    distance[i][j] = min(distance[i][j],
+    distance[i][k]+distance[k][j]);
+    }
+  }
+}
+
+```
+
+

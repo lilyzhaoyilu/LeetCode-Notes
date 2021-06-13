@@ -12,7 +12,7 @@
 - [Dynamic Programming:fountain_pen:](#Dynamic-Programming)
 - [Two Pointers / PreSum:fountain_pen:](#Two-Pointers-/-PreSum)
 - [Union Find:heavy_check_mark:](#Union-Find)
-
+- [Graph:fountain_pen:](#Graph)
 ## Others
 
 - [Presum and Prefix](#Presum-and-Prefix)
@@ -102,6 +102,8 @@
 3. 检测是否有环 - 将边合并，如果在合并之前就同元，那么就有环
 4. 确定无向图的连通分量
 5. 亲戚问题，是否同个祖先
+
+### [Graph](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Graph.md)
 
 ## others
 
