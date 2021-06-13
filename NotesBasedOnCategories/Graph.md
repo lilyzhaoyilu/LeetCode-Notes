@@ -85,3 +85,69 @@ var dfs = function(v){
 算法的基本思想是贪心，每次都遍历所有邻居，并从中找到距离最小的，本质上是一种广度优先遍历。  
 这里我们借助**堆**这种数据结构，使得可以在 **logN** 的时间内找到 cost 最小的点。
 
+LC778
+
+### floyd_warshall 算法
+解决任意两点距离的算法，多远最短路径。也是单元最短路径的经典动态规划算法。相比上面的 dijkstra 算法， 由于其计算过程会把中间运算结果保存起来防止重复计算，因此其特别适合求图中任意两点的距离，基本思想是动态规划。该算法的时间复杂度是 O(N^3)空间复杂度是 O(N^2)，其中 N 为顶点个数。
+
+The
+following code constructs a distance matrix where distance[a][b] is the shortest
+distance between nodes a and b. First, the algorithm initializes distance using
+the adjacency matrix `graph` of the graph:
+```
+for (int i = 1; i <= n; i++) {
+  for (int j = 1; j <= n; j++) {
+    if (i == j) distance[i][j] = 0;
+    else if (graph[i][j]) distance[i][j] = graph[i][j];
+    else distance[i][j] = INF;
+  }
+}
+```
+After this, the shortest distances can be found as follows:
+```
+for (int k = 1; k <= n; k++) {
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
+    distance[i][j] = min(distance[i][j],
+    distance[i][k]+distance[k][j]);
+    }
+  }
+}
+
+```
+
+
+Bellman-ford
+
+```
+def bell_man(edges, s):
+    dis = defaultdict(lambda: math.inf)
+    dis[s] = 0
+    for _ in range(n):
+        for u, v, w in edges:
+            if dis[u] + w < dis[v]:
+                dis[v] = dis[u] + w
+    //侦测是否有负weight，无论起点在哪儿都可以用这个方法
+    for u, v, w in edges:
+        if dis[u] * w < dis[v]:
+            return -1
+
+    return dis
+
+```
+
+```
+  for (int i = 1; i <= n; i++) distance[i] = INF;
+
+  distance[x] = 0;
+
+  for (int i = 1; i <= n-1; i++) {
+    for (auto e : edges) {
+    int a, b, w;
+    tie(a, b, w) = e;
+
+    distance[b] = min(distance[b], distance[a]+w);
+    }
+  }
+
+```
