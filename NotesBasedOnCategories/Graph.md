@@ -1,4 +1,4 @@
-# 图
+# 图 Graph
 
 * 点 vertice: 代表事物
 * 链接 link/edge: 代表事物间的关系
@@ -7,11 +7,11 @@
 
 **N代表点的个数，M代表edges的个数，下同。**
 
--[基本概念](#基本概念)  
--[图的建立](#图的建立)  
--[图的遍历](#图的遍历)  
--[常见图算法-最短距离](#常见图算法-最短距离)  
--[Spanning Trees 生成树](Spanning-Trees-生成树)  
+- [基本概念](#基本概念)  
+- [图的建立](#图的建立)  
+- [图的遍历](#图的遍历)  
+- [常见图算法-最短距离](#常见图算法-最短距离)  
+- [Spanning Trees 生成树](Spanning-Trees-生成树)  
 ## 基本概念
 - **无向图 & 有向图**  
 (v, w) 表示无向边，即 v 和 w 是互通的  
@@ -99,13 +99,14 @@ LC886
 1. [Bellman-ford-Shortest-Path](#Bellman-ford-Shortest-Path)  
 2. [DIJKSTRA](#DIJKSTRA)
 3. [Floyd Warshall](Floyd-Warshall)  
-[例题LC 743 Bellman-ford & DJ](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC743.%20Network%20Delay%20Time.md)   
+
+[例题LC 743 Bellman-ford & DIJKSTRA](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC743.%20Network%20Delay%20Time.md)   
+
 ### Bellman-ford-Shortest Path
 can 1) detect negative cycle
 
 Time: O(NM) n-1 rounds and iterate through all m edges
-if no negative cycles, **all distances are final after n - 1 roudns**, because the shortest path can contain at most n - 1 edges
-(a graph without cycle mostly has n - 1 edges)
+if no negative cycles, **all distances are final after n - 1 roudns**, because the shortest path can contain at most n - 1 edges (a graph without cycle mostly has n - 1 edges)   
 possible more efficient: stop the algorithem if no distance can be reduced during a round
 
 **check negative cycle**
@@ -184,15 +185,13 @@ for (int k = 1; k <= n; k++) {
 ```
 
 ## Spanning Trees 生成树
-
+[例题LC1584 Kruskal’s & Prim](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC1584.%20Min%20Cost%20to%20Connect%20All%20Points.md)
 ### Basics
 A spanning tree of a graph consits of all nodes of the graph and some of the edges of the graph so that there is a path between any two nodes. Spanning trees, like trees, are connected and acyclic. Several wasy to construct a spanning tree from a graph. 
 
-weight of a spanning tree: sum of its edge weights.
+**weight of a spanning tree**: sum of its edge weights.
 
-#### minimum spanning tree & maximum spanning tree
-
-min/max: based on the weight. They can be not unique in a graph / there can be several of them in a graph.
+**minimum spanning tree & maximum spanning tree**: based on the weight. They can be not unique in a graph / there can be several of them in a graph.
 
 #### Kruskal’s algorithm (O(MlogM))
 1. 首先建立图，edges = [[p1,p2, cost]]
@@ -212,7 +211,8 @@ Similar to Dijkstra’s algorithm, can use priority queue.
 而 Prim 则是基于堆的贪心算法
 **time: O(n+mlogm)**
 Prim算法，该算法以顶点为单元，与图中边数无关，比较适合于稠密图
-1. adds an abitrary node to the tree
-2. always choose a **minimum-weight edge** that adds a **new node** to the tree  
+1. initialize a new set for visited nodes
+2. adds an abitrary node to the tree
+3. always choose a **minimum-weight edge** that adds a **new node** to the tree  
 2 is where it is similar to Dijstra & can be optimized with heap
-3. if all nodes have been added/ the size of union is n, the minimum spinning tree has been found
+4. if all nodes have been added/ the size of union is n, the minimum spinning tree has been found
