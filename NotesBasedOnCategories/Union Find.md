@@ -162,14 +162,21 @@ class UnionFind{
     const rootY = this.findSet(y)
     if(rootX == rootY) return;
 
-    if(this.rank[rootX] > this.rank[rootY]){
-      this.parents[rootY] = rootX
-    }else if(this.rank[rootY] > this.rank[rootX]){
-      this.parents[rootX] = rootY
-    }else{
-      this.parents[rootY] = rootX
-      this.rank[rootX]++
+    // if(this.rank[rootX] > this.rank[rootY]){
+    //   this.parents[rootY] = rootX
+    // }else if(this.rank[rootY] > this.rank[rootX]){
+    //   this.parents[rootX] = rootY
+    // }else{
+    //   this.parents[rootY] = rootX
+    //   this.rank[rootX]++
+    // }
+
+    if(hits.rank[rootX] < this.rank[rootY]){
+      [this.rank[rootX], this.rank[rootY]] = [[this.rank[rootY], this.rank[rootX]]
     }
+    this.rank[rootX] += this.rank[rootY]
+    this.parents[rootY] = rootX
+
     this.count--
   }
 

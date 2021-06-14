@@ -5,6 +5,13 @@
 图论是一种表示`多对多`关系的数据结构。
 图是由顶点和边组成的，可以无边，但至少有一个顶点。
 
+**N代表点的个数，M代表edges的个数，下同。**
+
+-[基本概念](#基本概念)  
+-[图的建立](#图的建立)  
+-[图的遍历](#图的遍历)  
+-[常见图算法-最短距离](#常见图算法-最短距离)  
+-[Spanning Trees 生成树](Spanning-Trees-生成树)  
 ## 基本概念
 - **无向图 & 有向图**  
 (v, w) 表示无向边，即 v 和 w 是互通的  
@@ -75,10 +82,25 @@ var dfs = function(v){
 5. 若 v 的邻接顶点 col 未被访问过的，则 col 继续
 6. 查找顶点 v 的另一个新的邻接顶点 col，转到步骤 5 入队列，直到顶点 v 的所有未被访问过的邻接点处理完。转到步骤 2
 
+## 常见图遍历应用
+### 查询是否连接图
+### 查询是否有环
+### bipartitie 二分性
+A graph is bipartite if its nodes can be colored using two colors so that there are
+no adjacent nodes with the same color.  
+1. colorstarting node blue, all its neighbors red, all their neighbors blue, and so on. 
+2. If at some point of the search we notice that two adjacent nodes have the same color, this means that the graph is not bipartite.
 
-## 常见算法
-
-### Bellman-ford - Shortest Path
+Otherwise the graph is bipartite and one coloring has been found.   
+LC785
+LC886  
+  
+## 常见图算法-最短距离 
+1. [Bellman-ford-Shortest-Path](#Bellman-ford-Shortest-Path)  
+2. [DIJKSTRA](#DIJKSTRA)
+3. [Floyd Warshall](Floyd-Warshall)  
+[例题LC 743 Bellman-ford & DJ](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC743.%20Network%20Delay%20Time.md)   
+### Bellman-ford-Shortest Path
 can 1) detect negative cycle
 
 Time: O(NM) n-1 rounds and iterate through all m edges
@@ -98,31 +120,16 @@ def bell_man(edges, s):
                 dis[v] = dis[u] + w
     //侦测是否有负weight，无论起点在哪儿都可以用这个方法
     for u, v, w in edges:
-        if dis[u] * w < dis[v]:
+        if dis[u] + w < dis[v]:
             return -1
 
     return dis
 
 ```
 
-```
-  for (int i = 1; i <= n; i++) distance[i] = INF;
-
-  distance[x] = 0;
-
-  for (int i = 1; i <= n-1; i++) {
-    for (auto e : edges) {
-    int a, b, w;
-    tie(a, b, w) = e;
-
-    distance[b] = min(distance[b], distance[a]+w);
-    }
-  }
-
-```
-### DIJKSTRA 是图中任意两点的最短距离。单源。
-
-以下是错的  
+### DIJKSTRA 
+**是图中任意两点的最短距离。单源。**  
+以下是错的    
 *如果不用堆的话没法保证每次都是最短的`路径`出现，图里有环的时候可能存在有超过一条路径到某个点的情况。
 比如`[[1,2,1],[2,3,2],[1,3,4]]`从1开始出发，有 1->2->3 和 1->3两条路径*
 
@@ -135,8 +142,6 @@ A remarkable property in Dijkstra’s algorithm is that whenever a node is
 selected, its distance is final.
 不能有负权  
 
-
-LC778
 steps  
 1) initiate all distance to be infinite, and starting node to be 0
 2) selecte a node that is not visited & the distance is as small as possible (1st one is the starting node)
@@ -146,9 +151,11 @@ steps
 
 
 
-### floyd_warshall 算法
+### Floyd Warshall
 解决任意两点距离的算法，多远最短路径。也是单元最短路径的经典动态规划算法。相比上面的 dijkstra 算法， 由于其计算过程会把中间运算结果保存起来防止重复计算，因此其特别适合求图中任意两点的距离，基本思想是动态规划。  
 该算法的时间复杂度是 O(N^3)空间复杂度是 O(N^2)，其中 N 为顶点个数。
+
+1462. Course Schedule IV
 
 The
 following code constructs a distance matrix where distance[a][b] is the shortest
@@ -176,4 +183,36 @@ for (int k = 1; k <= n; k++) {
 
 ```
 
+## Spanning Trees 生成树
 
+### Basics
+A spanning tree of a graph consits of all nodes of the graph and some of the edges of the graph so that there is a path between any two nodes. Spanning trees, like trees, are connected and acyclic. Several wasy to construct a spanning tree from a graph. 
+
+weight of a spanning tree: sum of its edge weights.
+
+#### minimum spanning tree & maximum spanning tree
+
+min/max: based on the weight. They can be not unique in a graph / there can be several of them in a graph.
+
+#### Kruskal’s algorithm (O(MlogM))
+1. 首先建立图，edges = [[p1,p2, cost]]
+2. 按照cost 从小到大排序 (O(MlogM))
+3. 建立并查集，每个node是自己一个集  
+4. 遍历已经sort过的edges来合并集，
+5. 当发现p1和p2不是同一个集的时候，代表他们还没有被链接过。链接他们，并且把cost累计到形成min spinning tree的cost中去
+KruKal 是基于图的联通性贪心算法
+复杂度  
+find是logN(假设chain的长度是logN)， unite也是logN。 并查集unit省时间的办法：always connect the root of the smaller set to the root of larger set, the length of any chain will be O(logN)  
+Kruskal’s  
+Kruskal算法，该算法以边为单元，时间主要取决于边数，比较适合于稀疏图
+
+
+#### Prim’s algorithm
+Similar to Dijkstra’s algorithm, can use priority queue.
+而 Prim 则是基于堆的贪心算法
+**time: O(n+mlogm)**
+Prim算法，该算法以顶点为单元，与图中边数无关，比较适合于稠密图
+1. adds an abitrary node to the tree
+2. always choose a **minimum-weight edge** that adds a **new node** to the tree  
+2 is where it is similar to Dijstra & can be optimized with heap
+3. if all nodes have been added/ the size of union is n, the minimum spinning tree has been found
