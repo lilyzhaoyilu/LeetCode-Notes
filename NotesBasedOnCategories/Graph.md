@@ -11,7 +11,8 @@
 - [图的建立](#图的建立)  
 - [图的遍历](#图的遍历)  
 - [常见图算法-最短距离](#常见图算法-最短距离)  
-- [Spanning Trees 生成树](Spanning-Trees-生成树)  
+- [Spanning Trees 生成树](#spanning-trees-生成树)   
+- [拓扑排序 Topological Sort](#拓扑排序-Topological-Sort)
 ## 基本概念
 - **无向图 & 有向图**  
 (v, w) 表示无向边，即 v 和 w 是互通的  
@@ -92,58 +93,79 @@ no adjacent nodes with the same color.
 2. If at some point of the search we notice that two adjacent nodes have the same color, this means that the graph is not bipartite.
 
 Otherwise the graph is bipartite and one coloring has been found.   
-LC785
+[二分性模板题LC785](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC785.%20Is%20Graph%20Bipartite%EF%80%BF.md)  
 LC886  
   
 ## 常见图算法-最短距离 
-1. [Bellman-ford-Shortest-Path](#Bellman-ford-Shortest-Path)  
-2. [DIJKSTRA](#DIJKSTRA)
+1. [Bellman-Ford](#Bellman-Ford)  
+2. [Dijkstra](#Dijkstra)
 3. [Floyd Warshall](Floyd-Warshall)  
 
-[例题LC 743 Bellman-ford & DIJKSTRA](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC743.%20Network%20Delay%20Time.md)   
+N:number of nodes ; M: number of edges
+|            | Bellman Ford  | Dijkstra |  Floyd Warshall   |
+| -------------| ------------- | ------------- |  ------------- |
+| 简介       | 建立edges list [(u,v,w)]，从1..n遍历所有点；如果有更小的就更新（遍历n-1)次；再遍历一次如果还有更新就可以检测到图内有环  | 建立图，每次挑选最小的weight进行下一轮遍历，每个遍历完的就是final。可用堆加速。  | 动态规划，得到图中所有两点之间最短距离。多源。 本质是寻找是否有k点使得[i][j]距离更短 |
+| 能提供| 起始点最短路径，是否有环，是否有负权   | 起始点到所有点最短路径 | 所有点到所有点最短路径 |
+| 负权| 可以在n round检查是否有   | 有的话就不能用d |  ~？ |
+| 检测环| 可以在n round检查是否有（如果有更新就是有）   | 有的话就不能用d |  ~？ |
+| 时间复杂| O(nm) (n-1) rounds of all m edges  | 普通：O(NM)    |O(N^3) 三层遍历: k, i, j  |
+| 时间复杂优化|   |**有堆：O(N + mlogm)** goes through all nodes of  the graph and adds for each edge at most one distance to the priority queue  | |
+| 空间复杂| O(N)  | O(M)堆的大小  |O(N^2) dp表格  |
 
-### Bellman-ford-Shortest Path
-can 1) detect negative cycle
+[模板题Bellman-ford & DIJKSTRA LC 743 ](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC743.%20Network%20Delay%20Time.md)   
 
-Time: O(NM) n-1 rounds and iterate through all m edges
-if no negative cycles, **all distances are final after n - 1 roudns**, because the shortest path can contain at most n - 1 edges (a graph without cycle mostly has n - 1 edges)   
+### Bellman Ford
+
+**应用**
+- 单源最短距离
+- 检测是否有负数w （第n round遍历如果有update，无视起始点）
+- 检测是否有环  （第n round遍历如果有update，无视起始点）
+
+**复杂度**  
+时间： O(NM)  
+ n-1 rounds and iterate through all m edges
+if no negative cycles, **all distances are final after n - 1 rounds**, because the shortest path can contain at most n - 1 edges (a graph without cycle mostly has n - 1 edges)   
 possible more efficient: stop the algorithem if no distance can be reduced during a round
-
-**check negative cycle**
-run the algorithm N times, if the last round reduces any distance, the graph contains a negative cycle, regardless of the starting node. 
-```
-def bell_man(edges, s):
-    dis = defaultdict(lambda: math.inf)
-    dis[s] = 0
+ 
+``` JavaScript
+略写...下面的不能跑
+var bellmanFord = function(edges){
+    //1. build edges = [(u,v,w)]
+    //2. build distance = new Map to record shortest distance 
+    //3. set starting node's distance = 0, other Inf
+    //4. itarate edges, update distances
+    dis = new Map()
+    dis.set(startingNode, 0)
+    
     for _ in range(n):
         for u, v, w in edges:
             if dis[u] + w < dis[v]:
                 dis[v] = dis[u] + w
-    //侦测是否有负weight，无论起点在哪儿都可以用这个方法
+
+    //侦测是否有负weight || 有环
     for u, v, w in edges:
         if dis[u] + w < dis[v]:
             return -1
 
     return dis
+}
 
 ```
 
-### DIJKSTRA 
-**是图中任意两点的最短距离。单源。**  
-以下是错的    
-*如果不用堆的话没法保证每次都是最短的`路径`出现，图里有环的时候可能存在有超过一条路径到某个点的情况。
-比如`[[1,2,1],[2,3,2],[1,3,4]]`从1开始出发，有 1->2->3 和 1->3两条路径*
+### Dijkstra   
 
-算法的基本思想是贪心，每次都遍历所有邻居，并从中找到距离最小的，本质上是一种广度优先遍历。  O(NM)
+**简介**  
+算法的基本思想是贪心，每次都遍历所有邻居，并从中找到距离最小的，本质上是一种广度优先遍历。   
+
+The algorithm goes through all nodes of the graph and adds for each edge at most one distance to the priority queue.  O(NM)  
+
 这里我们借助**堆**这种数据结构，使得可以在 **logN** 的时间内找到 cost 最小的点。
-O(N + mlogM) m edges, n nodes => O(NlogN)
-because the algorithm goes through all nodes of the graph and adds for each edge at most one distance to the priority queue.
+O(N + mlogM) m edges, n nodes => O(NlogN)    
 
-A remarkable property in Dijkstra’s algorithm is that whenever a node is
-selected, its distance is final.
-不能有负权  
+A remarkable property in Dijkstra’s algorithm is that whenever a node is selected, its distance is final.
 
-steps  
+
+**steps**  
 1) initiate all distance to be infinite, and starting node to be 0
 2) selecte a node that is not visited & the distance is as small as possible (1st one is the starting node)
 3) when a node is selected, the algorithm goes through all edges that start at the node and reduces the distances using them
@@ -156,7 +178,7 @@ steps
 解决任意两点距离的算法，多远最短路径。也是单元最短路径的经典动态规划算法。相比上面的 dijkstra 算法， 由于其计算过程会把中间运算结果保存起来防止重复计算，因此其特别适合求图中任意两点的距离，基本思想是动态规划。  
 该算法的时间复杂度是 O(N^3)空间复杂度是 O(N^2)，其中 N 为顶点个数。
 
-1462. Course Schedule IV
+[模板题 1462. Course Schedule IV](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC1462.%20Course%20Schedule%20IV.md)
 
 The
 following code constructs a distance matrix where distance[a][b] is the shortest
@@ -187,11 +209,17 @@ for (int k = 1; k <= n; k++) {
 ## Spanning Trees 生成树
 [例题LC1584 Kruskal’s & Prim](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC1584.%20Min%20Cost%20to%20Connect%20All%20Points.md)
 ### Basics
-A spanning tree of a graph consits of all nodes of the graph and some of the edges of the graph so that there is a path between any two nodes. Spanning trees, like trees, are connected and acyclic. Several wasy to construct a spanning tree from a graph. 
+A spanning tree of a graph consits of all nodes of the graph and some of the edges of the graph so that there is a path between any two nodes. Spanning trees, like trees, are **connected** and **acyclic**. **Several ways** to construct a spanning tree from a graph. 
 
 **weight of a spanning tree**: sum of its edge weights.
 
 **minimum spanning tree & maximum spanning tree**: based on the weight. They can be not unique in a graph / there can be several of them in a graph.
+|            | Kruskal  | Prim |  
+| -------------| ------------- | ------------- | 
+| 简介| 建立edges和并查集（每个点都是一个元），将edges从小到大来合并集。当p1和p2不是一个集的时候，链接他们，并且累加cost。当链接了n次，代表完成 | 类似Dijkstra。开启一个新集（visited）和dist（用来记录当前搜过的最短路径），随便开始一个点。每次加入和当前node的cost最低的(更低的) && 没有被链接过的 edge（可以用heap优化）。当visited的大小和原集相同，就完成了。 | 
+| 本质 | 基于图的联通性贪心算法/加边法 | 基于堆的贪心算法/加点法 | 
+| 适合图形 | 稀疏图(点多边少，因为以边为单元) | 稠密图（因为以点为单元） | 
+| 时间复杂度 | O(mlogm)因为有sort，其中优化过的并查集 unit & find都应该是logN | O(n+mlogm) 堆优化 |
 
 #### Kruskal’s algorithm (O(MlogM))
 1. 首先建立图，edges = [[p1,p2, cost]]
@@ -202,8 +230,8 @@ A spanning tree of a graph consits of all nodes of the graph and some of the edg
 KruKal 是基于图的联通性贪心算法
 复杂度  
 find是logN(假设chain的长度是logN)， unite也是logN。 并查集unit省时间的办法：always connect the root of the smaller set to the root of larger set, the length of any chain will be O(logN)  
-Kruskal’s  
-Kruskal算法，该算法以边为单元，时间主要取决于边数，比较适合于稀疏图
+
+Kruskal算法，该算法以边为单元，时间主要取决于边数，比较适合于稀疏图(点多边少)
 
 
 #### Prim’s algorithm
@@ -216,3 +244,17 @@ Prim算法，该算法以顶点为单元，与图中边数无关，比较适合�
 3. always choose a **minimum-weight edge** that adds a **new node** to the tree  
 2 is where it is similar to Dijstra & can be optimized with heap
 4. if all nodes have been added/ the size of union is n, the minimum spinning tree has been found
+
+
+## 拓扑排序 Topological Sort
+A topological sort is an ordering of the nodes of a directed graph such that if
+there is a path from node a to node b, then node a appears before node b in the
+ordering.   
+在计算机科学领域，有向图的拓扑排序是对其顶点的一种线性排序，使得对于从顶点 u 到顶点 v 的每个有向边 uv， u 在排序中都在之前。当且仅当图中没有定向环时（即有向无环图），才有可能进行拓扑排序。  
+  
+典型的题目就是给你一堆课程，课程之间有先修关系，让你给出一种可行的学习路径方式，要求先修的课程要先学。任何有向无环图至少有一个拓扑排序。已知有算法可以在线性时间内，构建任何有向无环图的拓扑排序。  
+**Has to be Acyclic**  
+任何有向无环图至少有一个拓扑排序。已知有算法可以在线性时间内，构建任何有向无环图的拓扑排序。
+
+## Kahn 算法
+简单来说，假设 L 是存放结果的列表，先找到那些入度为零的节点，把这些节点放到 L 中，因为这些节点没有任何的父节点。然后把与这些节点相连的边从图中去掉，再寻找图中的入度为零的节点。对于新找到的这些入度为零的节点来说，他们的父节点已经都在 L 中了，所以也可以放入 L。重复上述操作，直到找不到入度为零的节点。如果此时 L 中的元素个数和节点总数相同，说明排序完成；如果 L 中的元素个数和节点总数不同，说明原图中存在环，无法进行拓扑排序。
