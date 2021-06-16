@@ -110,7 +110,10 @@
 ### [Presum and Prefix](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/preSum%20and%20Prefix.md)
 1. nums[i] >= 0, presum就是一个升序数组
 2. presum求得之后，可以任意被打乱顺序，仍代表某 presum[j] - presum[i - 1] (不过这时候要记得presum =[0])
-
+  
+### [差分数组]()
+1. 频繁对原始数组的某个区间的元素进行增减
+  
 
 ### [Monotonic Queue](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Monotonic%20Queue.md)
 

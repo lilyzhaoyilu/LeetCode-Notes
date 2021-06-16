@@ -40,7 +40,39 @@
 一个连通图的生成树是指一个连通子图，它含有图中全部 n 个顶点，但只有足以构成一棵树的 n-1 条边。一颗有 n 个顶点的生成树有且仅有 n-1 条边，如果生成树中再添加一条边，则必定成环。  
 在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树，其中代价和指的是所有边的权重和。
 
-## 图的建立
+## 图的建立和代表 Graph Represnetation
+
+1. Adjacency List    
+Each node x in teh graph is assinged an adjacency list that consists of nodes to which there is an edge from x.   
+For undirected graph, store both ways.  
+```
+1 -> 2 && 1->3
+adj[1].push(2)
+adj[1].push(3)
+
+//undirected 1 - 2
+adj[1].push(2)
+adj[2].push(1)
+
+//weighted
+   5(i am the weight!)
+1 -> 2
+adj[1].push([2,5])
+```
+
+*advantage: efficiently find the nodes to which we can move from a given node through an edge*
+
+2. Adjacency Matrixs  
+It is a 2-d array that indicates which edges the graph contains. 
+```
+adj[a][b] = 1 || 0 (true/false)  or weight
+```
+*advantage: efficiently check from an adjancency matrix if there is an edge between two nodes*
+
+
+3. Edge List  
+It contains all edges of a graph in some order.   
+It is convenient if the algorithm processes all edges of the graph and it is not needed to find edges that start at a given node. 
 
 1. 邻接矩阵：使用 n * n 的矩阵来描述graph[i][j]边的关系。 
 
@@ -106,8 +138,8 @@ N:number of nodes ; M: number of edges
 | -------------| ------------- | ------------- |  ------------- |
 | 简介       | 建立edges list [(u,v,w)]，从1..n遍历所有点；如果有更小的就更新（遍历n-1)次；再遍历一次如果还有更新就可以检测到图内有环  | 建立图，每次挑选最小的weight进行下一轮遍历，每个遍历完的就是final。可用堆加速。  | 动态规划，得到图中所有两点之间最短距离。多源。 本质是寻找是否有k点使得[i][j]距离更短 |
 | 能提供| 起始点最短路径，是否有环，是否有负权   | 起始点到所有点最短路径 | 所有点到所有点最短路径 |
-| 负权| 可以在n round检查是否有   | 有的话就不能用d |  ~？ |
-| 检测环| 可以在n round检查是否有（如果有更新就是有）   | 有的话就不能用d |  ~？ |
+| 负权| 可以在n round检查是否有   | 有的话就不能用Dijkstra |  ~？ |
+| 检测环| 可以在n round检查是否有（如果有更新就是有）   | 有的话就不能用Dijkstra |  ~？ |
 | 时间复杂| O(nm) (n-1) rounds of all m edges  | 普通：O(NM)    |O(N^3) 三层遍历: k, i, j  |
 | 时间复杂优化|   |**有堆：O(N + mlogm)** goes through all nodes of  the graph and adds for each edge at most one distance to the priority queue  | |
 | 空间复杂| O(N)  | O(M)堆的大小  |O(N^2) dp表格  |
@@ -166,6 +198,11 @@ A remarkable property in Dijkstra’s algorithm is that whenever a node is selec
 
 
 **steps**  
+1. 建立图，建立distance，建立visited（也可以用distance来代表visited，因为distance只要有的，就代表visited过）
+2. 建立queue，push第一个点进去；
+3. while(queue),更新每个pop出来的点的dis
+4. 在graph[curnode]里面，寻找还没有被访问过的点，并加入queue。注意这时候加入queue的cost 是 curCost + 图里的weight
+
 1) initiate all distance to be infinite, and starting node to be 0
 2) selecte a node that is not visited & the distance is as small as possible (1st one is the starting node)
 3) when a node is selected, the algorithm goes through all edges that start at the node and reduces the distances using them
@@ -179,6 +216,12 @@ A remarkable property in Dijkstra’s algorithm is that whenever a node is selec
 该算法的时间复杂度是 O(N^3)空间复杂度是 O(N^2)，其中 N 为顶点个数。
 
 [模板题 1462. Course Schedule IV](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC1462.%20Course%20Schedule%20IV.md)
+
+steps
+1. 建立图
+2. 根据图更新distance[n][n];如果是一个点就是0；不然的话infinity
+3. n 次遍历 distance， （N^3), 更新距离 `distance[i][j] = min(distance[i][j],distance[i][k]+distance[k][j]);`
+
 
 The
 following code constructs a distance matrix where distance[a][b] is the shortest
@@ -222,7 +265,7 @@ A spanning tree of a graph consits of all nodes of the graph and some of the edg
 | 时间复杂度 | O(mlogm)因为有sort，其中优化过的并查集 unit & find都应该是logN | O(n+mlogm) 堆优化 |
 
 #### Kruskal’s algorithm (O(MlogM))
-1. 首先建立图，edges = [[p1,p2, cost]]
+1. 首先建立edges lists，edges = [[p1,p2, cost]]
 2. 按照cost 从小到大排序 (O(MlogM))
 3. 建立并查集，每个node是自己一个集  
 4. 遍历已经sort过的edges来合并集，
@@ -257,4 +300,24 @@ ordering.
 任何有向无环图至少有一个拓扑排序。已知有算法可以在线性时间内，构建任何有向无环图的拓扑排序。
 
 ## Kahn 算法
-简单来说，假设 L 是存放结果的列表，先找到那些入度为零的节点，把这些节点放到 L 中，因为这些节点没有任何的父节点。然后把与这些节点相连的边从图中去掉，再寻找图中的入度为零的节点。对于新找到的这些入度为零的节点来说，他们的父节点已经都在 L 中了，所以也可以放入 L。重复上述操作，直到找不到入度为零的节点。如果此时 L 中的元素个数和节点总数相同，说明排序完成；如果 L 中的元素个数和节点总数不同，说明原图中存在环，无法进行拓扑排序。
+假设 L 是存放结果的列表，先找到那些入度为零的节点，把这些节点放到 L 中，因为这些节点没有任何的父节点。
+
+然后把与这些节点相连的边从图中去掉，再寻找图中的入度为零的节点。
+
+对于新找到的这些入度为零的节点来说，他们的父节点已经都在 L 中了，所以也可以放入 L。
+
+重复上述操作，直到找不到入度为零的节点。
+
+如果此时 L 中的元素个数和节点总数相同，说明排序完成；如果 L 中的元素个数和节点总数不同，说明原图中存在环，无法进行拓扑排序。
+
+steps  
+1. 建立图 和 indegree
+2. 把indegree 为 0 的节点们放入queue中  
+3. 把节点相连的边从图中去掉，如果这时候有新的indegree == 0的点，继续2  
+4. 直到queue为空，查看 visited的点和总节点数。如果相同，拓扑完成；不然的话，有环。
+
+*当我们把某一个node从queue中拿出来执行，这意味着什么？*  
+意味着以该node的指向其他点的边都消失了，也就是这个node的outdegree变成了0.
+
+*每循环一层代表什么？*  
+在BFS的循环中，每一层代表离出发点的距离又远了1.
