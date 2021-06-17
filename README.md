@@ -6,7 +6,7 @@ This is a collection of my Leetcode solutions and study of DS&A
 
 ### Progress 进度
 
-Currently ranked about ~40,000 on LeetCodeCN
+Currently ranked about ~15,500 on LeetCodeCN
 <br>
 ![LEETCODECN](https://github.com/lilyzhaoyilu/LeetCodeRecord/blob/master/assets/LCCN.png)
 <br>
