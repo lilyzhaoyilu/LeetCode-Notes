@@ -43,8 +43,8 @@
   1. 拓扑排序（100%）
   2. 出现连通块的关键词（100%）connected component
   3. 分层遍历（100%）
-  4. 简单图最短路径（100%）
-  5. 给定一个变换规则，从初始状态到最终状态最少走几步（100%）
+  4. 简单图最短路径（100%）// 给定一个变换规则，从初始状态到最终状态最少走几步
+  5. 双向BFS
 - DFS - Depth First Search
   1. 满足某个条件的所有解决方案(99%)
   2. 二叉树问题(90%)
@@ -124,17 +124,6 @@
 5. 对O(N)继续优化成OlogN的时候，可以建立以单调栈。它
 5.1 作为接龙可以是每个可接龙值的最小值
 5.2 可以是升序单调栈，利用升序和index的关系，把双循环改成单循环
-```
-    countNotGreater(diff, nums){
-        let i = 0, ans = 0;
-        for(let j = 1; j < nums.length; j++){
-            while(nums[j] - nums[i] > diff){
-                i++
-            }
-            ans += j - i 
-        }
-        return ans
-    }
-```
+
 
 ### [Topological Sort](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Topological.md)
