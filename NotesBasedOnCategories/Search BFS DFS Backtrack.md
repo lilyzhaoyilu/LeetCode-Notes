@@ -60,13 +60,47 @@ function bfs() {
 n 是点数, m 是边数
 空间复杂度：O(n)
 
-**双向搜索**  
+### 双向搜索  
 让我们继续回到这道题。为了能够判断两者是否交汇，我们可以使用两个 hashSet 分别存储起点集合终点集。当一个节点既出现起点集又出现在终点集，那就说明出现了交汇。  
+
+**基本思路**
+1. 创建**两个队列**分别用于两个方向的搜索
+2. 创建**两个哈希表**用于解决**相同节点重复搜索**和**记录转换次数**
+3. 为了尽可能让两个搜索方向‘平均’：每次从队列中取值进行扩展时，先判断哪个队列容量较少
+4. 如果在搜索过程中**搜到对方搜过的节点**，则找到了最短路径。
+
+```
+// 只有两个队列都不空，才有必要继续往下搜索
+// 如果其中一个队列空了，说明从某个方向搜到底都搜不到该方向的目标节点
+// memo {word => steps from origin}
+while(!queue1.isEmpty() && !queue2.isEmpty()) {
+    if (queue1.size() < queue2.size()) {
+        update(queue1, memo1, memo2);
+    } else {
+        update(queue2, memo2, memo1);
+    }
+
+    
+}
+
+var update = function(curQueue, curMemo, theOtherMemo){
+   const curWord = curQueue.shift()
+
+   search all possible next Word from curWord
+   1. if curMemo has it, continue
+   2. if otherMemo has it, return curMemo.get(curWord) + otherMemo.get(nextWord) + 1
+   3. else, push the possible next step into queue & record it into the curMemo
+                  curMemo(nextWord, curMemo.get(curWord) + 1)
+  
+}
+```
+
 **保存笛卡尔积**  
+127. 单词接龙
 140. 单词拆分 II
 816. 模糊坐标  
 
 
 
-
+[双向搜索宫水三叶](https://mp.weixin.qq.com/s/CsAx6FydjW4U0KFafVwb1Q)
 https://leetcode-solution.cn/solutionDetail?type=2&id=3003&max_id=3008
