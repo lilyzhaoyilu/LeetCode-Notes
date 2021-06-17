@@ -1,11 +1,11 @@
 ## Union Find 并查集
 
 学习 https://mp.weixin.qq.com/s/aHdMcSAu2cpHgRq46yW3dw  
--[Hints to Use](#Hints-to-Use)  
--[基本操作](#基本操作)  
--[并查集模板](#并查集模板)  
--[带权并查集](#带权并查集)  
--[#检查是否有环](#检查是否有环)
+- [Hints to Use](#Hints-to-Use)  
+- [基本操作](#基本操作)  
+- [并查集模板](#并查集模板)  
+- [带权并查集](#带权并查集)  
+- [#检查是否有环](#检查是否有环)
 
 ### Intro
 

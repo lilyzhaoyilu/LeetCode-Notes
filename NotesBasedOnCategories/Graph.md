@@ -42,7 +42,7 @@
 
 ## 图的建立和代表 Graph Represnetation
 
-1. Adjacency List    
+1. **Adjacency List**    
 Each node x in teh graph is assinged an adjacency list that consists of nodes to which there is an edge from x.   
 For undirected graph, store both ways.  
 ```
@@ -62,7 +62,7 @@ adj[1].push([2,5])
 
 *advantage: efficiently find the nodes to which we can move from a given node through an edge*
 
-2. Adjacency Matrixs  
+2. **Adjacency Matrixs**  
 It is a 2-d array that indicates which edges the graph contains. 
 ```
 adj[a][b] = 1 || 0 (true/false)  or weight
@@ -70,23 +70,10 @@ adj[a][b] = 1 || 0 (true/false)  or weight
 *advantage: efficiently check from an adjancency matrix if there is an edge between two nodes*
 
 
-3. Edge List  
-It contains all edges of a graph in some order.   
+3. **Edge List**   
+It contains **all edges** of a graph in some order.  
+`const edges = [[a,b,w], [c,d,w2]]...  `   
 It is convenient if the algorithm processes all edges of the graph and it is not needed to find edges that start at a given node. 
-
-1. 邻接矩阵：使用 n * n 的矩阵来描述graph[i][j]边的关系。 
-
-graph[i][j] = 1来表述有一条边 `i -> j`。可以用0来表示没有边，或者用数字来表示权重。  
-空间复杂度: O(N^2)。 如果是稀疏图（顶点数目 > 边 很多），则浪费空间。如果是无向图，也会浪费~50%的空间。  
-优点： 1)直观; 2)时间复杂度是O(1)，在判断顶点是否连接，入度，初度，和更新度数的时候。  
-在无向图中，邻接矩阵关于对角线相等
-
-2. 邻接表：对于每个点，存一个链表，用链表来只想所有与改点直接相连的点。
-对于有全图来说，链表中元素值对应着权重。
-
-邻接矩阵和链表对比：
-邻接矩阵由于没有相连的边也占有空间，因此存在浪费空间的问题，而邻接链表则比较合理地利用空间
-邻接链表比较耗时，牺牲很大的时间来查找，因此比较耗时，而邻接矩阵法相比邻接链表法来说，时间复杂度低。
 
 
 ## 图的遍历 - 找出图中所有的点
@@ -116,8 +103,13 @@ var dfs = function(v){
 6. 查找顶点 v 的另一个新的邻接顶点 col，转到步骤 5 入队列，直到顶点 v 的所有未被访问过的邻接点处理完。转到步骤 2
 
 ## 常见图遍历应用
+例题 LC261 以图判树
 ### 查询是否连接图
+即从随便某个点开始，看是否每个点都能访问到剩余的点；或者说visited.size == n 
 ### 查询是否有环
+A graph contains a cycle if during a graph traversal, we find a node whose neighbor(other than the previous node in the current path) has alreayd been visited. 
+
+
 ### bipartitie 二分性
 A graph is bipartite if its nodes can be colored using two colors so that there are
 no adjacent nodes with the same color.  
@@ -137,6 +129,7 @@ N:number of nodes ; M: number of edges
 |            | Bellman Ford  | Dijkstra |  Floyd Warshall   |
 | -------------| ------------- | ------------- |  ------------- |
 | 简介       | 建立edges list [(u,v,w)]，从1..n遍历所有点；如果有更小的就更新（遍历n-1)次；再遍历一次如果还有更新就可以检测到图内有环  | 建立图，每次挑选最小的weight进行下一轮遍历，每个遍历完的就是final。可用堆加速。  | 动态规划，得到图中所有两点之间最短距离。多源。 本质是寻找是否有k点使得[i][j]距离更短 |
+| 初始化| edges list, distance list(inf) | graph, distance/weight map(inf), visited, minHeap |  K, adjcency matrix, distance(inf) |
 | 能提供| 起始点最短路径，是否有环，是否有负权   | 起始点到所有点最短路径 | 所有点到所有点最短路径 |
 | 负权| 可以在n round检查是否有   | 有的话就不能用Dijkstra |  ~？ |
 | 检测环| 可以在n round检查是否有（如果有更新就是有）   | 有的话就不能用Dijkstra |  ~？ |
@@ -259,7 +252,8 @@ A spanning tree of a graph consits of all nodes of the graph and some of the edg
 **minimum spanning tree & maximum spanning tree**: based on the weight. They can be not unique in a graph / there can be several of them in a graph.
 |            | Kruskal  | Prim |  
 | -------------| ------------- | ------------- | 
-| 简介| 建立edges和并查集（每个点都是一个元），将edges从小到大来合并集。当p1和p2不是一个集的时候，链接他们，并且累加cost。当链接了n次，代表完成 | 类似Dijkstra。开启一个新集（visited）和dist（用来记录当前搜过的最短路径），随便开始一个点。每次加入和当前node的cost最低的(更低的) && 没有被链接过的 edge（可以用heap优化）。当visited的大小和原集相同，就完成了。 | 
+| 简介| 建立edges和并查集（每个点都是一个元），将edges从weight小到大来合并集。当p1和p2不是一个集的时候，链接他们，并且累加cost。当链接了n次，代表完成//当两个点连通，代表完成。最后一个连接的weight总是最大的。 | 类似Dijkstra。开启一个新集（visited）和dist（用来记录当前搜过的最短路径），随便开始一个点。每次加入和当前node的cost最低的(更低的) && 没有被链接过的 edge（可以用heap优化）。当visited的大小和原集相同，就完成了。 | 
+| 初始化 | edges list(sorted), union find | visited, weightMap(minheap) | 
 | 本质 | 基于图的联通性贪心算法/加边法 | 基于堆的贪心算法/加点法 | 
 | 适合图形 | 稀疏图(点多边少，因为以边为单元) | 稠密图（因为以点为单元） | 
 | 时间复杂度 | O(mlogm)因为有sort，其中优化过的并查集 unit & find都应该是logN | O(n+mlogm) 堆优化 |
