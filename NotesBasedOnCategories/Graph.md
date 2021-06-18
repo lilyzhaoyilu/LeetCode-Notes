@@ -212,7 +212,7 @@ A remarkable property in Dijkstra’s algorithm is that whenever a node is selec
 
 steps
 1. 建立图
-2. 根据图更新distance[n][n];如果是一个点就是0；不然的话infinity
+2. 根据图更新distance[n][n]; 1）如果是一个点就是0；2）有图的话就是图上的距离；3）不然的话infinity 
 3. n 次遍历 distance， （N^3), 更新距离 `distance[i][j] = min(distance[i][j],distance[i][k]+distance[k][j]);`
 
 
