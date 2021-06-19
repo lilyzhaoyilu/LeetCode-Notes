@@ -1,10 +1,5 @@
 # Two Pointers / Siding Window
 
-https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md  
-前缀和  
-https://mp.weixin.qq.com/s/6hTbcin64TtHi0UEpvkchA
-二维前缀和
-https://mp.weixin.qq.com/s/PR8i45CBmWeB3aLSC36mlQ
 
 ## Complexity
 
@@ -20,6 +15,8 @@ Space: O(1)
 4. 有 subarray / substring 关键词(50%)
 5. 回文 palindrome （50%）
 6. 前缀和
+7. 当我们需要枚举数组中的两个元素时，如果我们发现随着第一个元素的递增，第二个元素是递减的，那么就可以使用双指针的方法，将枚举的时间复杂度从 O(N^2)减少至 O(N)。
+
 
 ## 常见题型
 
@@ -111,3 +108,8 @@ var removeDuplicates = function(nums) {
 };
 
 ```
+https://github.com/azl397985856/leetcode/blob/master/thinkings/slide-window.md  
+前缀和  
+https://mp.weixin.qq.com/s/6hTbcin64TtHi0UEpvkchA
+二维前缀和
+https://mp.weixin.qq.com/s/PR8i45CBmWeB3aLSC36mlQ

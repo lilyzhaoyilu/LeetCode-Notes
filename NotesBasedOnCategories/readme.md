@@ -25,6 +25,7 @@
 3. 有限解空间，可以通过搜索排除某个区域不符合答案(100%)
 4. 找到一个最大/最小值使某个条件被满足(90%)
 5. 通过merge sort 或者 前缀和构建有序数组 
+5. 5. 找第K小
 
 ### [Sorting Methods](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Sortings%20Methods.md)
 
@@ -94,6 +95,8 @@
 3. 原地交换，不能使用额外空间(80%)
 4. 有 subarray / substring 关键词(50%)
 5. 回文 palindrome （50%）
+6. 前缀和
+7. 当我们需要枚举数组中的两个元素时，如果我们发现随着第一个元素的递增，第二个元素是递减的，那么就可以使用双指针的方法，将枚举的时间复杂度从 O(N^2)减少至 O(N)。
 
 ### [Union Find](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/NotesBasedOnCategories/Union%20Find.md)
 
