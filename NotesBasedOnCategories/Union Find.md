@@ -31,11 +31,16 @@ Disjoint Sets: in Math, two sets are said to be disjoint setts if they have no e
 
 #### Complexity
 
-- Time : 每一个
-  Union O(1)? logCharacterLength?
-  Find O(1)
-  路径压缩 logN 严格趋近于 O(1)
-  所有的就是 O(N)
+- **Time Complexity**   
+  **Union/合并**  
+  时间复杂度是 2find * 合并部分，其中合并合并部分的时间是O(1)，所以合并的时间复杂度是find的时间复杂度。
+
+  **Find**  
+  复杂度是树的高度。
+  最坏的情况，树是一条线，复杂度就是O(N)  
+  当树是balanced binary tree, 复杂度是O(logN)  
+  有了状态压缩的话，平均下来趋近于O(1)
+
 - Space: O(N)
 
 #### 基本操作
@@ -51,6 +56,7 @@ function MAKE-SET(x) // root ->  我爸爸是我自己
 - Find (x) （确定元素属于哪个子集，它可以被用来确定两个元素是否属于同一个子集
 
 ```
+带路径压缩
 FIND-SET(x)
   if x != x.parent
     return FIND-SET(x.parent)
@@ -140,12 +146,12 @@ class UnionFind{
   // }
 
   //路径压缩 findSet(x)
+
   findSet(x){
-    while(this.parents[x] != x){
-      this.parents[x] = this.parents[this.parents[x]]
-      x = this.parents[x]
+    if (this.parents[x] != x){
+      this.parents[x] = this.findSet(this.parents[x])
     }
-    return x
+    return this.parents[x]
   }
 
   // union(x, y){

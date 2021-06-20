@@ -11,10 +11,18 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 也就是 (i + 1) + (j + 1) = (m + n ) / 2 
 所以j = (m + n) / 2 - i - 2 
 验证i，j在正确的位置：`maxLeftA <= minRightB` `&&` `maxLeftB <= minRightA`
+
+
+本质上是对nums1的切割位置做二分搜索。因为 len(nums1Left) + lens(nums2Left) = (m + n + 1) >> 1 所以j的位置可以推断的求
+
+
+
 #### 代码 JavaScript
 
 ```JavaScript
 var findMedianSortedArrays = function(nums1, nums2) {
+
+    //这里是为了优化，不是必须。没有这个就不是 min(nums1,nums2)的log了
     if(nums1.length > nums2.length){
         [nums1, nums2] = [nums2, nums1]
     }
@@ -22,15 +30,16 @@ var findMedianSortedArrays = function(nums1, nums2) {
     const m = nums1.length;
     const n = nums2.length;
 
-    //low & high are both length
+    //low & high are both length //切割的地方 //index
     let low = 0; high = m;
 
     while(low <= high){
         //i & j 在这里也是length
         const i = low + Math.floor((high - low) / 2)
+        //j 要注意当 m + n 是偶数的时候， + 1 会让结果相同。当m + n 是奇数的时候，其实切割的位置在 m+n+ 1 / 2，比如[1,2,/3]
         const j = Math.floor((m + n + 1) / 2) - i
 
-        //跟 0-based index 对齐
+        //跟 0-based index 对齐 因为0是falsy value，所以写判断的时候要注意
         const maxLeftA = i === 0 ? -Infinity : nums1[i - 1]
         const minRightA = i === m ? Infinity : nums1[i]
         const maxLeftB = j === 0 ? -Infinity : nums2[j - 1]
