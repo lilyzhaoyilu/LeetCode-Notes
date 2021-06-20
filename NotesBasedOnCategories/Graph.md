@@ -136,6 +136,7 @@ N:number of nodes ; M: number of edges
 | 时间复杂| O(nm) (n-1) rounds of all m edges  | 普通：O(NM)    |O(N^3) 三层遍历: k, i, j  |
 | 时间复杂优化|   |**有堆：O(N + mlogm)** goes through all nodes of  the graph and adds for each edge at most one distance to the priority queue  | |
 | 空间复杂| O(N)  | O(M)堆的大小  |O(N^2) dp表格  |
+| notes|   | D可以一次遍历后求出源点到所有点的最短距离，也可以多个源点，这样就能知道所有源点到所有其他点的最短距离 |  |
 
 [模板题Bellman-ford & DIJKSTRA LC 743 ](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/Graph%26Topo/LC743.%20Network%20Delay%20Time.md)   
 
