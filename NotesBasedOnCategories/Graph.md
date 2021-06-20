@@ -129,7 +129,7 @@ N:number of nodes ; M: number of edges
 |            | Bellman Ford  | Dijkstra |  Floyd Warshall   |
 | -------------| ------------- | ------------- |  ------------- |
 | 简介       | 建立edges list [(u,v,w)]，从1..n遍历所有点；如果有更小的就更新（遍历n-1)次；再遍历一次如果还有更新就可以检测到图内有环  | 建立图，每次挑选最小的weight进行下一轮遍历，每个遍历完的就是final。可用堆加速。  | 动态规划，得到图中所有两点之间最短距离。多源。 本质是寻找是否有k点使得[i][j]距离更短 |
-| 初始化| edges list, distance list(inf) | graph, distance/weight map(inf), visited, minHeap |  K, adjcency matrix, distance(inf) |
+| 初始化| edges list, distance list(inf) | graph, **distance/weight map(inf), visited**, minHeap |  K, adjcency matrix, distance(inf) |
 | 能提供| 起始点最短路径，是否有环，是否有负权   | 起始点到所有点最短路径 | 所有点到所有点最短路径 |
 | 负权| 可以在n round检查是否有   | 有的话就不能用Dijkstra |  ~？ |
 | 检测环| 可以在n round检查是否有（如果有更新就是有）   | 有的话就不能用Dijkstra |  ~？ |
