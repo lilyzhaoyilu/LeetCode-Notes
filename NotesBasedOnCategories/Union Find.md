@@ -36,9 +36,9 @@ Disjoint Sets: in Math, two sets are said to be disjoint setts if they have no e
   时间复杂度是 2find * 合并部分，其中合并合并部分的时间是O(1)，所以合并的时间复杂度是find的时间复杂度。
 
   **Find**  
-  复杂度是树的高度。
+  复杂度是树的高度。N 是这个树的数据数。
   最坏的情况，树是一条线，复杂度就是O(N)  
-  当树是balanced binary tree, 复杂度是O(logN)  
+  当树是一个树, 复杂度是O(logN)  
   有了状态压缩的话，平均下来趋近于O(1)
 
 - Space: O(N)
@@ -196,6 +196,12 @@ class UnionFind{
 }
 
 ```
+### 数岛屿个数
+给每个岛屿建立子集，
+然后如果顺序遍历可以只查右和下。每次建立count++，每次合并count--
+
+不能默认每个都是子集，不然岛屿size == 1 的时候没法和 0 区分开。
+
 
 ### 带权并查集
 
