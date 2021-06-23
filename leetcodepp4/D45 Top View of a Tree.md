@@ -30,5 +30,5 @@ class Solution {
 ```
 
 #### 复杂度分析
-时间复杂度：O(N)搜所有的点 </br>
+时间复杂度：O(NlogN)排序的大小 搜所有的点 </br>
 空间复杂度：O(N) memo和queue的大小
