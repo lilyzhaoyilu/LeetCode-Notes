@@ -82,3 +82,6 @@ function countSubArray(k, nums) {
 因此不难看出 exactK 其实就是 betweenK 的特殊形式。当 k1 == k2 的时候， betweenK 等价于 exactK。
 
 因此 atMostK 就是灵魂方法，一定要掌握，不明白建议多看几遍。
+
+
+https://lucifer.ren/blog/2020/09/27/atMostK/
