@@ -1,5 +1,5 @@
 # Promise
-
+- [示例 fetch更简洁的写法](#示例-fetch更简洁的写法)
 - [示例 XMLHttpRequest 获取多个page](#示例-XMLHttpRequest-获取多个page)
 - [示例 fetch 获取多个page](#示例-fetch-获取多个page)
 - [promisfy](#promisfy-httpsget-或者XMLHTTPREQUEST)
@@ -142,6 +142,56 @@ const promisify = fn => {
    return new Promise((resolve, reject) => { fn((err, data) => err ? reject(err) : resolve(data))})
 }
 ```
+### 示例 fetch更简洁的写法
+
+```JavaScript
+const fetch = require("node-fetch");
+async function getRelevant(city = "Boston", maxCost = 50) {
+
+  const getUrl = (totalPage) => {
+    let myurl = `https://jsonmock.hackerrank.com/api/food_outlets?city=Boston&page=`;
+    const myarray = Array.from({ length: totalPage }, (_, n) => n + 1)
+    const mypromises = myarray.map(ele => fetch((myurl + ele), { method: "GET" })
+      .then((res) => res.json())
+      .catch(console.error))
+
+    return Promise.all(mypromises)
+  }
+
+
+
+  const getFirst = (city) => (
+    `https://jsonmock.hackerrank.com/api/food_outlets?city=${city}&page=1`)
+
+  const res1 = await fetch(getFirst(city), { method: "GET" })
+    .then((res1) => res1.json())
+    .then(res => res.total_pages)
+    .then((totalPage) => getUrl(totalPage))
+    .then(data => data.map(e => e.data))
+    .catch(console.error)
+
+
+  console.log(res1)
+
+
+
+
+  //   const ret = []
+  //   for (const obj of res) {
+  //     for (const second of obj.data) {
+  //       console.log(second)
+  //       if (second.estimated_cost == 50) {
+  //         ret.push(second.name)
+  //       }
+  //     }
+  //   }
+
+  //   console.log(ret);
+}
+getRelevant();
+```
+
+
 
 ### 示例 XMLHttpRequest 获取多个page
 
