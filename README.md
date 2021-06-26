@@ -17,7 +17,7 @@ Currently ranked about ~15,500 on LeetCodeCN
 - [LeetCode PlusPlus - 91day4](https://github.com/lilyzhaoyilu/LeetCodeRecord/tree/master/leetcodepp4) 91 天学算法第四期是一个力扣加加的活动，大家一起打卡
 - [Basic 200](https://github.com/lilyzhaoyilu/LeetCodeRecord/tree/master/Basic200) The collection of some fundemental questions for review later. 基础题合集
 - [Daily Questions 每日一题](https://github.com/lilyzhaoyilu/LeetCodeRecord/tree/master/lcDaily) Prob. do not need to review 可能不太需要复习
-
+- [JS Promise](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/JavaScript/promise.md)
 ### Lanaguages 语言
 
 Lanaguages used: JavaScript, Ruby  
