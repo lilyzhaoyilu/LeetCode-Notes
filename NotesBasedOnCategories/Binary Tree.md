@@ -59,34 +59,10 @@ var BFSBinaryTree = function(root) {
 
 新节点为白色，遇到白色的标记成为灰色并且将灰色的左右节点入栈  
 如果遇到灰色，则直接将节点值输出
+**用stack写标记颜色的顺序跟recursion写的正好相反就行了**
 
 ```JavaScript
-var preorderTraversal = function(root) {
-  if(!root) return [];
-
-  const res = [];
-  const queue = [[ 'WHITE', root]]
-
-  while(queue.length){
-    const [color, node] = queue.shift();
-    if(!node) continue;
-
-    if(color == 'WHITE'){
-      queue.push(['GRAY', node]) //前序遍历，用queue的话这样
-      //因为queue FIFO
-      queue.push(['WHITE', node.left])
-      queue.push(['WHITE', node.right])
-    }else{
-      res.push(node.val)
-    }
-  }
-  return res;
-};
-
-```
-
-```JavaScript
-var TwoColorBFS = function(root){
+var TwocolorInorder = function(root){
   if(!root) return [];
 
   const res = [];
@@ -110,7 +86,7 @@ var TwoColorBFS = function(root){
 ```
 
 ```JavaScript
-var preorderTraversal = function(root) {
+var TwoColorPreorder = function(root) {
   if(!root) return [];
 
   const res = [];
@@ -161,7 +137,8 @@ function dfs(i) {
 }
 ```
 
-#### 树 DFS 模板
+#### 树 DFS 模板 
+因为树是无环图，所以可以不用visit
 
 ```JavaScript
 function dfs(root) {
@@ -209,8 +186,6 @@ function dfs(root) {
 
 ### 二叉搜索树Bianry Search Tree
 
-
-
 **二叉搜索树**
 特质：
 
@@ -232,18 +207,53 @@ The left and right subtree each must also be a binary search tree.
 二叉搜索树的中序遍历结果是一个有序列表。对先序遍历结果排序，排序结果就是中序遍历结果。
 也可以根据先序遍历和中序遍历确定是同一颗树。
 
-常规操作：插入，查找，删除，找父节点，求最值
 
 #### 二叉搜索树特质一：便于查找
 
 当查找一个数的时候，每次排除大约一半的可能性（像二分法），所以搜索过程的时间复杂度就是 O(logN)。  
-但树相对于数组而言，在添加和删除的时候时间都是 O(Height)；如果是平衡二叉搜索书，那么时间复杂度就是 O(logN)。而数组的添加和删除时间复杂度为 O(N)。
+但树相对于数组而言，在添加和删除的时候时间都是 O(Height)；如果是平衡二叉搜索树，那么时间复杂度就是 O(logN)。而数组的添加和删除时间复杂度为 O(N)。
+
+根据定义
+如果一个node在左子树，那么它的取值范围(currentMin, root.val)   
+如果一个node在右子树，那么它的取值范围(root.val, currentMax)
+
+
 
 #### 二叉搜索树特质二：中序遍历有序
+**二叉搜索树的中序遍历的结果是一个有序数组。**  
+[中序遍历LC94更多遍历方法](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200II/LC94.%20Binary%20Tree%20Inorder%20Traversal.md)    
 
-另外二叉查找树有一个性质，这个性质对于做题很多帮助，那就是： 二叉搜索树的中序遍历的结果是一个有序数组。 比如 98. 验证二叉搜索树 就可以直接中序遍历，并一边遍历一边判断遍历结果是否是单调递增的，如果不是则提前返回 False 即可。  
+#### 中序遍历BFS模板
+```JavaScript
+var inorderTraversal = function(root) {
+    const res = []
+    if(!root) return res
+    let node = root
+    const stack = []
+
+    while(stack.length || node){
+        while(node){
+            stack.push(node)
+            node = node.left
+        }
+        node = stack.pop()
+        res.push(node.val)
+        node = node.right 
+    }
+
+    return res
+};
+
+```
+
+
+
+
+比如 98. 验证二叉搜索树 就可以直接中序遍历，并一边遍历一边判断遍历结果是否是单调递增的，如果不是则提前返回 False 即可。  
 
 再比如 99. 恢复二叉搜索树，官方难度为困难。题目大意是给你二叉搜索树的根节点 root ，该树中的两个节点被错误地交换。请在不改变其结构的情况下，恢复这棵树。 我们可以先中序遍历发现不是递增的节点，他们就是被错误交换的节点，然后交换恢复即可。这道题难点就在于一点，即错误交换可能错误交换了中序遍历的相邻节点或者中序遍历的非相邻节点，这是两种 case，需要分别讨论。
+
+
 
 #### 二叉搜索树：衍生完全二叉树
 
