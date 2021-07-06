@@ -139,9 +139,9 @@ DFS 使用栈，LIFO
 前序遍历：打印节点，遍历所有左节点，然后遍历右节点；  
 中序遍历：暂存节点，遍历所有左节点并且打印他们，打印暂存的中间节点，遍历右节点；  
 后序遍历：暂存节点，遍历所有左节点并且打印他们，遍历所有右节点并且打印他们，打印剩下的暂存节点；  
--[DFS 通用](DFS-通用模板)  
--[树 DFS 模板](树-DFS模板)  
--[二叉树 DFS 模板](树-DFS模板)
+- [DFS 通用](DFS-通用模板)  
+- [树 DFS 模板](树-DFS模板)  
+- [二叉树 DFS 模板](树-DFS模板)
 
 #### DFS 通用模板
 
@@ -195,7 +195,7 @@ function dfs(root) {
 
 ### 构建类题
 
-https://lucifer.ren/blog/2020/02/08/%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%93%E9%A2%98/  
+(二叉树搜索Lucifer)[https://lucifer.ren/blog/2020/02/08/%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%93%E9%A2%98/]
 二叉树构建类题分三种：
 
 1. 给你两种 DFS 的遍历的结果数组，让你构建出原始的树结构。
@@ -219,6 +219,15 @@ https://lucifer.ren/blog/2020/02/08/%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%9
 - 左、右子树也分别为二叉排序树；
 - 没有键值相等的节点。
 
+Binary Search Tree is a node-based binary tree data structure which has the following properties:   
+   
+The left subtree of a node **contains**(子节点的也算) only nodes with keys lesser than the node’s key.   
+The right subtree of a node contains only nodes with keys greater than the node’s key.   
+The left and right subtree each must also be a binary search tree.   
+
+
+
+
 - 中序遍历  
 二叉搜索树的中序遍历结果是一个有序列表。对先序遍历结果排序，排序结果就是中序遍历结果。
 也可以根据先序遍历和中序遍历确定是同一颗树。
@@ -240,7 +249,8 @@ https://lucifer.ren/blog/2020/02/08/%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%9
 
 1. 符合搜索二叉树的性质
 2. 插入都是先填满最左 available spot
-   我们可以给完全二叉树编号，这样父子之间就可以通过编号轻松求出。比如我给所有节点从左到右从上到下依次从 1 开始编号。那么已知一个节点的编号是 i，那么其左子节点就是 2 _ i，右子节点就是 2 _ i + 1，父节点就是 (i + 1) / 2。
+   我们可以给完全二叉树编号，这样父子之间就可以通过编号轻松求出。比如我给所有节点从左到右从上到下依次从 1 开始编号。那么已知一个节点的编号是 i，那么其左子节点就是 `2 * i + 1`，右子节点就是 `2 * i + 2`，父节点就是 `(i + 1) / 2`。   
+3. 完全二叉树 complete binary tree: 满树节点数字是 `2^h - 1` 每一层是 `2 ^ level(rootLevel = 0)`
 
 ## 技巧和一些题型
 
