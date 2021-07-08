@@ -117,12 +117,14 @@ LC142
 
 #### 反转链表前序
 **如果是前序遍历，那么你可以想象前面的链表都处理好了，怎么处理不管。**
+
 ```JavaScript
+//小漾yyds
 const preOrderReverse = (head, pre = null) =>{
-  if(!head) return null;
+  if(!head) return pre;
   const next = head.next;
   head.next = pre
-  preOrder(next, head)
+  return reverseList(next, head)
 }
 
 const preOrderReverseInterator = (head, pre = null) =>{
@@ -132,6 +134,7 @@ const preOrderReverseInterator = (head, pre = null) =>{
     pre = cur 
     cur = next
   }
+  return pre
 }
 
 
@@ -143,10 +146,18 @@ const preOrderReverseInterator = (head, pre = null) =>{
 ```JavaScript
 const postOrderReverse = (head) =>{
   if(!head || !head.next) return head;
-  const res = postOrderReverse(head.next)
+  const newHead = postOrderReverse(head.next)
+  //如果是12345 反转，那么 head.next 的referrence不会被改变
+  // console.log(head.val, head.next.val, newHead.val)
   head.next.next = head
-  head.next = none
+  head.next = null
+  return newHead
 }
+// 4 5 5
+// 3 4 5
+// 2 3 5
+// 1 2 5
+
 ```
 
 ![houxu](https://mmbiz.qpic.cn/mmbiz_jpg/liaT5dytkaTdIIUUoh8P2v7gW2tiahdUBj74jdQcdJY6HDIcToM3vJDXHZnELSr84TeCUUQcbDiasZdfe8NhEuHhQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
@@ -159,7 +170,7 @@ const postOrderReverse = (head) =>{
 1. 处理环
 2. 处理交点
 3. 找第k个点（让一个先走几步，另一个再走）
-4. 穿针引线 - 反转某段已经反转的列表
+4. 穿针引线 - 反转某段已经反转的列表  
 
 ![houxu2](https://mmbiz.qpic.cn/mmbiz_jpg/liaT5dytkaTdIIUUoh8P2v7gW2tiahdUBjJeibAnKTWHhwvJ3v0YBk1kT8k6mfW7RKO9mWpaHGEQnCyq72RWmfPyA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
