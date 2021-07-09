@@ -26,3 +26,11 @@ https://leetcode-cn.com/problems/unique-binary-search-trees/
 
 
 https://leetcode-solution.cn/solutionDetail?type=2&id=3006&max_id=3008
+https://medium.com/basecs/making-sense-of-merge-sort-part-1-49649a143478
+
+
+
+The basic steps of a d&c algorithm can be boiled down to these three steps:   
+Divide and break up the problem into the smallest possible “subproblem”, of the exact same type.    
+Conquer and tackle the smallest subproblems first. Once you’ve figured out a solution that works, use that exact same technique to solve the larger subproblems — in other words, solve the subproblems recursively.    
+Combine the answers and build up the smaller subproblems until you finally end up applying the same solution to the larger, more complicated problem that you started off with!   
