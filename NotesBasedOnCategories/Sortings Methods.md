@@ -24,72 +24,54 @@ https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan
 - Space complexity: O(1)
 
 ### 模板
-
+记住一定要j--先
 ```JavaScript
 var sortArray = function(nums) {
-  partision(nums, 0, nums.length - 1)
-  return nums
+
+    const quickSort = (l, r) => {
+        if(l >= r) return
+        let i = l, j = r;
+        const pivot = nums[l]
+        while(i < j){
+            while(i < j && nums[j] >= pivot) j--;
+            while(i < j && nums[i] <= pivot) i++;
+            if(i < j) [nums[i], nums[j]] = [nums[j], nums[i]]; 
+        }
+        // i 是基准值应该在的位置
+        [pivot, nums[i]] = [nums[i], pivot]
+        quickSort(l, i - 1)
+        quickSort(i + 1, r)   
+    }
+
+    quickSort(0, nums.length - 1)
+    return nums
 };
 
-var partision = function(nums, start, end){
-  if(start >= end) return;
-  const pivotIndex = start + ((end - start) >> 1)
-  const pivot = nums[pivotIndex]
-
-  let i = start, j = end;
-
-  while(i <= j){
-    while(nums[i] < pivot) i++
-    while(nums[j] > pivot) j--
-    if(i <= j){
-      [nums[i], nums[j]] = [nums[j], nums[i]]
-      i++
-      j--
-    }
-  }
-
-  partision(nums, start, j)
-  partision(nums, i, end)
-}
 ```
 
 O(n)时间可以选择第K个
 ```JavaScript
-var closestKValues = function(root, target, k) {
-    const nodes = []
+var findKthLargest = function(nums, k) {
+    const len = nums.length 
+    const target = len - k
 
-    const inorder = (node) => {
-        if(!node) return null
-
-        inorder(node.left)
-        nodes.push({val: node.val , diff:Math.abs(node.val - target) })
-        inorder(node.right)
-    }
-
-    const quickSort = (arr, l, r) => {
+    const quickSort = (l, r) => {
         if(l >= r) return
-        let i = l, j = r;
-
+        let i = l, j = r
         while(i < j){
-            while(i < j && arr[j].diff >= arr[l].diff) j--
-            while(i < j && arr[i].diff <= arr[l].diff) i++
-            swap(arr, i,j)
+            while(i < j && nums[j] >= nums[l])j--;
+            while(i < j && nums[l] >= nums[i])i++;
+            if(i < j){
+                [nums[i], nums[j]] = [nums[j], nums[i]]
+            }
         }
-        swap(arr,i,l)
-        if(k < i) return quickSort(arr, l, i -1)
-        if(k > i) return quickSort(arr, i + 1, r)
-        return arr
+        [nums[i], nums[l]] = [nums[l], nums[i]]
+        if(target === i) return nums;
+        else if(target > i) return quickSort(i + 1, r);
+        else return quickSort(l, i - 1);
     }
-
-    const swap = (arr, i, j)=> {
-        let temp = arr[i]
-        arr[i] = arr[j]
-        arr[j] = temp
-    }
-    inorder(root)
-    quickSort(nodes, 0, nodes.length - 1)
-
-    return nodes.slice(0,k).map((e) => e.val)
+    quickSort(0, len -1)
+    return nums[target] 
 };
 ```
 
