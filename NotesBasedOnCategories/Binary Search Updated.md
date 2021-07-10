@@ -30,6 +30,8 @@
 
 ## 二分两大模板
 
+
+### 二分两大模板：最左
 返回： 他应该在的新位置
 
 寻找最左插入位置 -> 这个数第一个出现的位置 || 右边的数大于它
@@ -67,7 +69,7 @@ console.log(bright([3, 5, 8, 9, 9, 9, 9, 9, 11], 9)) -> 8
 console.log(bright([1, 2, 3], 3)) -> 3 
 console.log(bright([1, 2, 3], 5)) -> 3 
 
-
+### 二分两大模板：最右
 ```JavaScript
 
 function binarySearchMostRightInsert(nums, target) {
