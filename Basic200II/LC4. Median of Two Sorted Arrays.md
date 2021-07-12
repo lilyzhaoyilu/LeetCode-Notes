@@ -15,7 +15,58 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 
 本质上是对nums1的切割位置做二分搜索。因为 len(nums1Left) + lens(nums2Left) = (m + n + 1) >> 1 所以j的位置可以推断的求
 
+- [二刷二分](#思路-二刷二分)
 
+### 思路 二刷二分
+本质上是对nums1的切割位置做二分搜索。
+#### 代码 JavaScript
+
+```JavaScript
+var findMedianSortedArrays = function(nums1, nums2) {
+
+    if(nums1.length > nums2.length){
+       let temp = nums1
+       nums1 = nums2.slice()
+       nums2 = temp
+    }
+    // nums1.length < nums2.length
+    const m = nums1.length, n = nums2.length;
+    const len = nums1.length + nums2.length;
+
+    // 寻找切割中位数的位置，在nums1中
+    let low = 0, high = m ;
+
+    while(low <= high){
+        let i = low + ((high - low) >> 1)
+        
+        let j = ((m + n + 1 ) >> 1) - i
+
+        //[1,2,   3]   len // 2 = 1   (len + 1) // 2 = 2
+        //[1,2,   3,4] len // 2 = 2    (len + 1) // 2 = 2
+        // nums1:    [0..i - 1] [i...]
+        // nums2:    [0..j - 1] [j...]
+        const Aleftmax = i == 0 ? -Infinity : nums1[i - 1]
+        const Arightmin = i == m ? Infinity: nums1[i ]
+        const Bleftmax = j == 0 ? -Infinity : nums2[j - 1]
+        const Brightmin = j == n ? Infinity : nums2[j]
+        // console.log(i, j)
+        if(Aleftmax <= Brightmin && Arightmin >= Bleftmax){
+            const res = (len & 1) ? Math.max(Aleftmax, Bleftmax) : ((Math.max(Aleftmax, Bleftmax) + Math.min(Arightmin, Brightmin)) / 2.0)
+            return res
+        }else if(Aleftmax > Brightmin){
+            high = i - 1
+        }else{
+            low = i + 1
+        }
+
+    }
+};
+
+```
+
+#### 复杂度分析
+时间复杂度： </br>
+空间复杂度：
 
 #### 代码 JavaScript
 
