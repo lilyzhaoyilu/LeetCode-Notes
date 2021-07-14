@@ -31,7 +31,7 @@ Disjoint Sets: in Math, two sets are said to be disjoint setts if they have no e
 
 #### Complexity
 
-- **Time Complexity**   
+**Time Complexity**   
   **Union/合并**  
   时间复杂度是 2find * 合并部分，其中合并合并部分的时间是O(1)，所以合并的时间复杂度是find的时间复杂度。
 
@@ -39,7 +39,7 @@ Disjoint Sets: in Math, two sets are said to be disjoint setts if they have no e
   复杂度是树的高度。N 是这个树的数据数。
   最坏的情况，树是一条线，复杂度就是O(N)  
   当树是一个树, 复杂度是O(logN)  
-  有了状态压缩的话，平均下来趋近于O(1)
+  有了按秩合并的话，平均下来**趋近于**O(1)
 
 - Space: O(N)
 
@@ -113,12 +113,13 @@ UNION(x, y){ //大的当爸爸
 ```
 
 2. 路径压缩 在`FIND-SET`的时候将节点的 parent 指向元
-
+我们知道每次 find 都会从当前节点往上不断搜索，直到到达根节点，因此 find 的时间复杂度大致相等于节点的深度，树的高度如果不加控制则可能为节点数，因此 find 的时间复杂度可能会退化到 O(n)O(n)。而如果进行路径压缩，那么树的平均高度不会超过 lognlogn，如果使用了路径压缩和下面要讲的按秩合并那么时间复杂度可以趋近 O(1)O(1)，具体证明略。不过给大家画了一个图来辅助大家理解。
 ```
-FIND-SET(x)
-  if x !== x.parent //如果自己不是元
-  x.parent = FIND-SET(x.parent) //把自己指向最终找到的元，完成路径压缩
-return x.parent
+def find(self, x):
+    if x != self.parent[x]:
+        self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    return x
 ```
 
 ### 并查集模板
@@ -138,20 +139,21 @@ class UnionFind{
   }
 
   //基础findSet
-  // findSet(x){
-  //   while(this.parents[x] != x){
-  //     x = this.parents[x]
-  //   }
-  //   return x
-  // }
+  findSet(x){
+    while(this.parents[x] != x){
+      x = this.parents[x]
+    }
+    return x
+  }
 
-  //路径压缩 findSet(x)
+  // 路径压缩 findSet(x)
 
   findSet(x){
     if (this.parents[x] != x){
       this.parents[x] = this.findSet(this.parents[x])
+      return this.parents[x]
     }
-    return this.parents[x]
+    return x
   }
 
   // union(x, y){
@@ -177,7 +179,7 @@ class UnionFind{
     //   this.rank[rootX]++
     // }
 
-    if(hits.rank[rootX] < this.rank[rootY]){
+    if(this.rank[rootX] < this.rank[rootY]){
       [this.rank[rootX], this.rank[rootY]] = [[this.rank[rootY], this.rank[rootX]]
     }
     this.rank[rootX] += this.rank[rootY]
