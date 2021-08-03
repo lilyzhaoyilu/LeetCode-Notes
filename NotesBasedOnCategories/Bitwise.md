@@ -14,6 +14,10 @@
 ```JavaScript
 偶数 & 1 = 0
 奇数 & 1 = 1 
+
+num & 1 = num;
+num & 0 = 0;
+
 bitmask &= -bitmask 把二进制中最右边的1保留，其他均为0
 ```
 
@@ -21,7 +25,8 @@ bitmask &= -bitmask 把二进制中最右边的1保留，其他均为0
 ```
 
 num ^ 0 = num;
-num ^ num = 0
+num ^ num = 0;
+num ^ 1 = ~num
 
 
 a ^ b ^ c = a ^ c ^ b
@@ -31,10 +36,10 @@ a ^ b ^ c = a ^ c ^ b
 ### << 和 >>
 
 ```JavaScript
-1 << num =>  2 ** num
+1 << num  等于  2 ** num
 
 
-num >> 1   =>  Math.floor(num / 2)
+num >> 1   等于  Math.floor(num / 2)
 
 mid = l + ((r - l) >> 1)
 
