@@ -8,7 +8,7 @@
 
 1. 动态找极值(60%)
    1.1 找最大或者最小值
-   1.2 找第 k ⼤(pop k 次 复杂度 O(nlogk))(50%) (build N pop k)
+   1.2 找第 k ⼤(dequeue k 次 复杂度 O(nlogk))(50%) (build N dequeue k)
    - 也可以 divide & conqure + resursive
 2. 要求 logn 时间对数据进⾏操作(40%)
 3. [topK](#四大应用：topK)
@@ -55,7 +55,7 @@ In order to maintain the shape/structure of a heap, we can only ever add an item
 1. add to the _most left available spot_
 2. swap the nodes, if out of order, to restore order (<- _heapify_ / bubble up)
 
-## Shrinking the Tree (pop the max/min ele pop the root)
+## Shrinking the Tree (dequeue the max/min ele dequeue the root)
 
 Most of the heaps remove the root node since they are the min/max
 
@@ -83,7 +83,7 @@ child = i, parent = Math.floor(i - 1 / 2)
 
 假设有[1,2,3,4,5,6] k = 2；
 
-可以先建立一个小顶堆，然后 pop k 次
+可以先建立一个小顶堆，然后 dequeue k 次
 
 或者建立一个**大顶堆**，并且维持堆大小 k：
 堆里有 k 个最小的数字，其中堆顶就是第 k 小的
@@ -102,10 +102,10 @@ child = i, parent = Math.floor(i - 1 / 2)
 - 多路体现在：有多条候选路线。代码上，我们可使用多指针来表示。
 - 归并体现在：结果可能是多个候选路线中最长的或者最短，也可能是第 k 个 等。因此我们需要对多条路线的结果进行比较，并根据题目描述舍弃或者选取某一个或多个路线。
 
-感觉很像 BFS，每次 pop 一个选项之后，根据这个 pop 的选项更新他的下一步所有可能解。
+感觉很像 BFS，每次 dequeue 一个选项之后，根据这个 dequeue 的选项更新他的下一步所有可能解。
 
 也可以动态求一堆数组里的 min 和 max 和他们衍生出来的差值。只要维护一个 min，再用另一个 maxHeap （或者反过来）即可枚举所有可能性。因为差值只跟可能解的最大和最小值有关，所以可以使用这个方式。
-具体： 首先确定一个可能解的 list，然后把他的每个 element 入 heap；在每次 pop 出来的时候，根据这个 element 再更新同个 element 的 variation。
+具体： 首先确定一个可能解的 list，然后把他的每个 element 入 heap；在每次 dequeue 出来的时候，根据这个 element 再更新同个 element 的 variation。
 
 -[KC264 ugly number](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)  
 -[LC1439](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows.md)
@@ -136,3 +136,55 @@ child = i, parent = Math.floor(i - 1 / 2)
 [LC 264. Ugly Number II](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)
 
 ### 四大应用：堆排序
+
+
+
+### 模板
+简洁版
+```JavaScript
+class MinHeap{
+   constructor(){
+      this.heap = [];
+   }
+
+   peak(){
+      return this.heap[0]
+   }
+
+   enqueue(ele){
+      this.heap.push(ele);
+      const size = this.heap.length;
+
+      for(let i = Math.floor(size / 2); i >= 0; i--){
+         this.heapify(this.heap, size, i)
+      }
+   }
+
+   dequeue(){
+      const last = this.heap.dequeue();
+      if(this.heap.length == 0) return last;
+      const root = this.heap[0]
+      this.heap[0] = last;
+      this.heapify(this.heap, this.heap.length, 0)
+      return root;
+   }
+
+   heapify(arr, size, i){
+      // maxHeap 可以把smallest改成biggest
+      let smallest = i, left = 2 * i + 1, right = left + 1;
+      // maxHeap 的话就是把下面的改成 arr[left] > arr[biggest]
+      if(left < size && arr[left] < arr[smallest]){
+         smallest = left
+      }
+       // maxHeap 的话就是把下面的改成 arr[right] > arr[biggest]
+      if(right < size && arr[right] < arr[smallest]){
+         smallest = right
+      }
+
+      if(smallest !== i){
+         [arr[i], arr[smallest]] = [arr[smallest], arr[i]]
+         this.heapify(arr, size, smallest)
+      }
+   }
+}
+```

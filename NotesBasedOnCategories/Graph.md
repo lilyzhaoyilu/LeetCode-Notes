@@ -283,6 +283,9 @@ Prim算法，该算法以顶点为单元，与图中边数无关，比较适合�
 2 is where it is similar to Dijstra & can be optimized with heap
 4. if all nodes have been added/ the size of union is n, the minimum spinning tree has been found
 
+#### TODO
+SPFA
+https://zhuanlan.zhihu.com/p/396576813
 
 ## 拓扑排序 Topological Sort
 A topological sort is an ordering of the nodes of a directed graph such that if
