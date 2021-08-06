@@ -1,8 +1,8 @@
 # Heap 堆 （动态求极值）
 
--[Hints to Use](#Hints-to-Use)  
--[复杂度](#Complexity)  
--[堆定义](#堆定义)
+- [Hints to Use](#Hints-to-Use)  
+- [复杂度](#Complexity)  
+- [堆定义](#堆定义)
 
 ### Hints to Use
 
@@ -107,8 +107,8 @@ child = i, parent = Math.floor(i - 1 / 2)
 也可以动态求一堆数组里的 min 和 max 和他们衍生出来的差值。只要维护一个 min，再用另一个 maxHeap （或者反过来）即可枚举所有可能性。因为差值只跟可能解的最大和最小值有关，所以可以使用这个方式。
 具体： 首先确定一个可能解的 list，然后把他的每个 element 入 heap；在每次 dequeue 出来的时候，根据这个 element 再更新同个 element 的 variation。
 
--[KC264 ugly number](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)  
--[LC1439](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows.md)
+- [KC264 ugly number](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC264.%20Ugly%20Number%20II.md)  
+- [LC1439](https://github.com/lilyzhaoyilu/LeetCode-Notes/blob/master/Basic200/Heap/LC1439.%20Find%20the%20Kth%20Smallest%20Sum%20of%20a%20Matrix%20With%20Sorted%20Rows.md)
 
 ### 事后诸葛亮 - 堆加速
 

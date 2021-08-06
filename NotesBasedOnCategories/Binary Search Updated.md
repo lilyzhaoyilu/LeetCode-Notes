@@ -178,7 +178,7 @@ def count_bs(nums, k):
 4.1 直接对序列排序
 
 4.2 遍历过程维护一个新的有序序列，有序序列的内容为已经遍历过的值的集合。
-https://leetcode-pp.github.io/leetcode-cheat/?tab=data-structure-vis
-https://lucifer.ren/blog/2021/03/08/binary-search-1/
-https://lucifer.ren/blog/2021/03/23/binary-search-2/
-https://github.com/azl397985856/leetcode/blob/master/91/binary-search.md
+https://leetcode-pp.github.io/leetcode-cheat/?tab=data-structure-vis   
+https://lucifer.ren/blog/2021/03/08/binary-search-1/   
+https://lucifer.ren/blog/2021/03/23/binary-search-2/   
+https://github.com/azl397985856/leetcode/blob/master/91/binary-search.md   
